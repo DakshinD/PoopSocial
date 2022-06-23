@@ -7,11 +7,13 @@
 
 import SwiftUI
 
+
 @main
 struct PoopSocialApp: App {
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LoginView()
         }
     }
 }

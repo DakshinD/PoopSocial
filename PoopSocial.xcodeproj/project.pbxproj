@@ -8,12 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		BEB7057A2864B97A008A6F24 /* PoopSocialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705792864B97A008A6F24 /* PoopSocialApp.swift */; };
-		BEB7057C2864B97A008A6F24 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7057B2864B97A008A6F24 /* ContentView.swift */; };
+		BEB7057C2864B97A008A6F24 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7057B2864B97A008A6F24 /* LoginView.swift */; };
 		BEB7057E2864B97B008A6F24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEB7057D2864B97B008A6F24 /* Assets.xcassets */; };
 		BEB705812864B97B008A6F24 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEB705802864B97B008A6F24 /* Preview Assets.xcassets */; };
 		BEB7058B2864B97B008A6F24 /* PoopSocialTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7058A2864B97B008A6F24 /* PoopSocialTests.swift */; };
 		BEB705952864B97B008A6F24 /* PoopSocialUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705942864B97B008A6F24 /* PoopSocialUITests.swift */; };
 		BEB705972864B97B008A6F24 /* PoopSocialUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705962864B97B008A6F24 /* PoopSocialUITestsLaunchTests.swift */; };
+		BEB705A42864C470008A6F24 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705A32864C470008A6F24 /* ContentView.swift */; };
+		BEB705AB2864C977008A6F24 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BEB705AA2864C977008A6F24 /* GoogleService-Info.plist */; };
+		BEB705AD2864CF02008A6F24 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705AC2864CF02008A6F24 /* ImagePicker.swift */; };
+		BEB705B82864E1FD008A6F24 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BEB705B72864E1FD008A6F24 /* FirebaseAuth */; };
+		BEB705BA2864E1FD008A6F24 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = BEB705B92864E1FD008A6F24 /* FirebaseFirestore */; };
+		BEB705BC2864E1FD008A6F24 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = BEB705BB2864E1FD008A6F24 /* FirebaseStorage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +42,7 @@
 /* Begin PBXFileReference section */
 		BEB705762864B97A008A6F24 /* PoopSocial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PoopSocial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEB705792864B97A008A6F24 /* PoopSocialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopSocialApp.swift; sourceTree = "<group>"; };
-		BEB7057B2864B97A008A6F24 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BEB7057B2864B97A008A6F24 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		BEB7057D2864B97B008A6F24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BEB705802864B97B008A6F24 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BEB705862864B97B008A6F24 /* PoopSocialTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PoopSocialTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +50,9 @@
 		BEB705902864B97B008A6F24 /* PoopSocialUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PoopSocialUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEB705942864B97B008A6F24 /* PoopSocialUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopSocialUITests.swift; sourceTree = "<group>"; };
 		BEB705962864B97B008A6F24 /* PoopSocialUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopSocialUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BEB705A32864C470008A6F24 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BEB705AA2864C977008A6F24 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BEB705AC2864CF02008A6F24 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +60,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEB705B82864E1FD008A6F24 /* FirebaseAuth in Frameworks */,
+				BEB705BA2864E1FD008A6F24 /* FirebaseFirestore in Frameworks */,
+				BEB705BC2864E1FD008A6F24 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,7 +107,10 @@
 			isa = PBXGroup;
 			children = (
 				BEB705792864B97A008A6F24 /* PoopSocialApp.swift */,
-				BEB7057B2864B97A008A6F24 /* ContentView.swift */,
+				BEB705A32864C470008A6F24 /* ContentView.swift */,
+				BEB7057B2864B97A008A6F24 /* LoginView.swift */,
+				BEB705AC2864CF02008A6F24 /* ImagePicker.swift */,
+				BEB705AA2864C977008A6F24 /* GoogleService-Info.plist */,
 				BEB7057D2864B97B008A6F24 /* Assets.xcassets */,
 				BEB7057F2864B97B008A6F24 /* Preview Content */,
 			);
@@ -143,6 +158,11 @@
 			dependencies = (
 			);
 			name = PoopSocial;
+			packageProductDependencies = (
+				BEB705B72864E1FD008A6F24 /* FirebaseAuth */,
+				BEB705B92864E1FD008A6F24 /* FirebaseFirestore */,
+				BEB705BB2864E1FD008A6F24 /* FirebaseStorage */,
+			);
 			productName = PoopSocial;
 			productReference = BEB705762864B97A008A6F24 /* PoopSocial.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +235,9 @@
 				Base,
 			);
 			mainGroup = BEB7056D2864B97A008A6F24;
+			packageReferences = (
+				BEB705B62864E1FD008A6F24 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = BEB705772864B97A008A6F24 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -233,6 +256,7 @@
 			files = (
 				BEB705812864B97B008A6F24 /* Preview Assets.xcassets in Resources */,
 				BEB7057E2864B97B008A6F24 /* Assets.xcassets in Resources */,
+				BEB705AB2864C977008A6F24 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,8 +281,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEB7057C2864B97A008A6F24 /* ContentView.swift in Sources */,
+				BEB7057C2864B97A008A6F24 /* LoginView.swift in Sources */,
+				BEB705AD2864CF02008A6F24 /* ImagePicker.swift in Sources */,
 				BEB7057A2864B97A008A6F24 /* PoopSocialApp.swift in Sources */,
+				BEB705A42864C470008A6F24 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,6 +609,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BEB705B62864E1FD008A6F24 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BEB705B72864E1FD008A6F24 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BEB705B62864E1FD008A6F24 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		BEB705B92864E1FD008A6F24 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BEB705B62864E1FD008A6F24 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		BEB705BB2864E1FD008A6F24 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BEB705B62864E1FD008A6F24 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BEB7056E2864B97A008A6F24 /* Project object */;
 }
