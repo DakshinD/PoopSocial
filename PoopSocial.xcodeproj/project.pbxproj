@@ -1,0 +1,588 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BEB7057A2864B97A008A6F24 /* PoopSocialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705792864B97A008A6F24 /* PoopSocialApp.swift */; };
+		BEB7057C2864B97A008A6F24 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7057B2864B97A008A6F24 /* ContentView.swift */; };
+		BEB7057E2864B97B008A6F24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEB7057D2864B97B008A6F24 /* Assets.xcassets */; };
+		BEB705812864B97B008A6F24 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEB705802864B97B008A6F24 /* Preview Assets.xcassets */; };
+		BEB7058B2864B97B008A6F24 /* PoopSocialTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7058A2864B97B008A6F24 /* PoopSocialTests.swift */; };
+		BEB705952864B97B008A6F24 /* PoopSocialUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705942864B97B008A6F24 /* PoopSocialUITests.swift */; };
+		BEB705972864B97B008A6F24 /* PoopSocialUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705962864B97B008A6F24 /* PoopSocialUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BEB705872864B97B008A6F24 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BEB7056E2864B97A008A6F24 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BEB705752864B97A008A6F24;
+			remoteInfo = PoopSocial;
+		};
+		BEB705912864B97B008A6F24 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BEB7056E2864B97A008A6F24 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BEB705752864B97A008A6F24;
+			remoteInfo = PoopSocial;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BEB705762864B97A008A6F24 /* PoopSocial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PoopSocial.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEB705792864B97A008A6F24 /* PoopSocialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopSocialApp.swift; sourceTree = "<group>"; };
+		BEB7057B2864B97A008A6F24 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BEB7057D2864B97B008A6F24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BEB705802864B97B008A6F24 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BEB705862864B97B008A6F24 /* PoopSocialTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PoopSocialTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEB7058A2864B97B008A6F24 /* PoopSocialTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopSocialTests.swift; sourceTree = "<group>"; };
+		BEB705902864B97B008A6F24 /* PoopSocialUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PoopSocialUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEB705942864B97B008A6F24 /* PoopSocialUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopSocialUITests.swift; sourceTree = "<group>"; };
+		BEB705962864B97B008A6F24 /* PoopSocialUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopSocialUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BEB705732864B97A008A6F24 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BEB705832864B97B008A6F24 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BEB7058D2864B97B008A6F24 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BEB7056D2864B97A008A6F24 = {
+			isa = PBXGroup;
+			children = (
+				BEB705782864B97A008A6F24 /* PoopSocial */,
+				BEB705892864B97B008A6F24 /* PoopSocialTests */,
+				BEB705932864B97B008A6F24 /* PoopSocialUITests */,
+				BEB705772864B97A008A6F24 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BEB705772864B97A008A6F24 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BEB705762864B97A008A6F24 /* PoopSocial.app */,
+				BEB705862864B97B008A6F24 /* PoopSocialTests.xctest */,
+				BEB705902864B97B008A6F24 /* PoopSocialUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BEB705782864B97A008A6F24 /* PoopSocial */ = {
+			isa = PBXGroup;
+			children = (
+				BEB705792864B97A008A6F24 /* PoopSocialApp.swift */,
+				BEB7057B2864B97A008A6F24 /* ContentView.swift */,
+				BEB7057D2864B97B008A6F24 /* Assets.xcassets */,
+				BEB7057F2864B97B008A6F24 /* Preview Content */,
+			);
+			path = PoopSocial;
+			sourceTree = "<group>";
+		};
+		BEB7057F2864B97B008A6F24 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				BEB705802864B97B008A6F24 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BEB705892864B97B008A6F24 /* PoopSocialTests */ = {
+			isa = PBXGroup;
+			children = (
+				BEB7058A2864B97B008A6F24 /* PoopSocialTests.swift */,
+			);
+			path = PoopSocialTests;
+			sourceTree = "<group>";
+		};
+		BEB705932864B97B008A6F24 /* PoopSocialUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BEB705942864B97B008A6F24 /* PoopSocialUITests.swift */,
+				BEB705962864B97B008A6F24 /* PoopSocialUITestsLaunchTests.swift */,
+			);
+			path = PoopSocialUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BEB705752864B97A008A6F24 /* PoopSocial */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BEB7059A2864B97B008A6F24 /* Build configuration list for PBXNativeTarget "PoopSocial" */;
+			buildPhases = (
+				BEB705722864B97A008A6F24 /* Sources */,
+				BEB705732864B97A008A6F24 /* Frameworks */,
+				BEB705742864B97A008A6F24 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PoopSocial;
+			productName = PoopSocial;
+			productReference = BEB705762864B97A008A6F24 /* PoopSocial.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BEB705852864B97B008A6F24 /* PoopSocialTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BEB7059D2864B97B008A6F24 /* Build configuration list for PBXNativeTarget "PoopSocialTests" */;
+			buildPhases = (
+				BEB705822864B97B008A6F24 /* Sources */,
+				BEB705832864B97B008A6F24 /* Frameworks */,
+				BEB705842864B97B008A6F24 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BEB705882864B97B008A6F24 /* PBXTargetDependency */,
+			);
+			name = PoopSocialTests;
+			productName = PoopSocialTests;
+			productReference = BEB705862864B97B008A6F24 /* PoopSocialTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BEB7058F2864B97B008A6F24 /* PoopSocialUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BEB705A02864B97B008A6F24 /* Build configuration list for PBXNativeTarget "PoopSocialUITests" */;
+			buildPhases = (
+				BEB7058C2864B97B008A6F24 /* Sources */,
+				BEB7058D2864B97B008A6F24 /* Frameworks */,
+				BEB7058E2864B97B008A6F24 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BEB705922864B97B008A6F24 /* PBXTargetDependency */,
+			);
+			name = PoopSocialUITests;
+			productName = PoopSocialUITests;
+			productReference = BEB705902864B97B008A6F24 /* PoopSocialUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BEB7056E2864B97A008A6F24 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					BEB705752864B97A008A6F24 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					BEB705852864B97B008A6F24 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = BEB705752864B97A008A6F24;
+					};
+					BEB7058F2864B97B008A6F24 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = BEB705752864B97A008A6F24;
+					};
+				};
+			};
+			buildConfigurationList = BEB705712864B97A008A6F24 /* Build configuration list for PBXProject "PoopSocial" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BEB7056D2864B97A008A6F24;
+			productRefGroup = BEB705772864B97A008A6F24 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BEB705752864B97A008A6F24 /* PoopSocial */,
+				BEB705852864B97B008A6F24 /* PoopSocialTests */,
+				BEB7058F2864B97B008A6F24 /* PoopSocialUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BEB705742864B97A008A6F24 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEB705812864B97B008A6F24 /* Preview Assets.xcassets in Resources */,
+				BEB7057E2864B97B008A6F24 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BEB705842864B97B008A6F24 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BEB7058E2864B97B008A6F24 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BEB705722864B97A008A6F24 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEB7057C2864B97A008A6F24 /* ContentView.swift in Sources */,
+				BEB7057A2864B97A008A6F24 /* PoopSocialApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BEB705822864B97B008A6F24 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEB7058B2864B97B008A6F24 /* PoopSocialTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BEB7058C2864B97B008A6F24 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEB705952864B97B008A6F24 /* PoopSocialUITests.swift in Sources */,
+				BEB705972864B97B008A6F24 /* PoopSocialUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BEB705882864B97B008A6F24 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BEB705752864B97A008A6F24 /* PoopSocial */;
+			targetProxy = BEB705872864B97B008A6F24 /* PBXContainerItemProxy */;
+		};
+		BEB705922864B97B008A6F24 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BEB705752864B97A008A6F24 /* PoopSocial */;
+			targetProxy = BEB705912864B97B008A6F24 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		BEB705982864B97B008A6F24 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BEB705992864B97B008A6F24 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BEB7059B2864B97B008A6F24 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"PoopSocial/Preview Content\"";
+				DEVELOPMENT_TEAM = AVT7P4879D;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dakshin.PoopSocial;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BEB7059C2864B97B008A6F24 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"PoopSocial/Preview Content\"";
+				DEVELOPMENT_TEAM = AVT7P4879D;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dakshin.PoopSocial;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		BEB7059E2864B97B008A6F24 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AVT7P4879D;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dakshin.PoopSocialTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PoopSocial.app/PoopSocial";
+			};
+			name = Debug;
+		};
+		BEB7059F2864B97B008A6F24 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AVT7P4879D;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dakshin.PoopSocialTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PoopSocial.app/PoopSocial";
+			};
+			name = Release;
+		};
+		BEB705A12864B97B008A6F24 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AVT7P4879D;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dakshin.PoopSocialUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PoopSocial;
+			};
+			name = Debug;
+		};
+		BEB705A22864B97B008A6F24 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AVT7P4879D;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dakshin.PoopSocialUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PoopSocial;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BEB705712864B97A008A6F24 /* Build configuration list for PBXProject "PoopSocial" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BEB705982864B97B008A6F24 /* Debug */,
+				BEB705992864B97B008A6F24 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BEB7059A2864B97B008A6F24 /* Build configuration list for PBXNativeTarget "PoopSocial" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BEB7059B2864B97B008A6F24 /* Debug */,
+				BEB7059C2864B97B008A6F24 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BEB7059D2864B97B008A6F24 /* Build configuration list for PBXNativeTarget "PoopSocialTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BEB7059E2864B97B008A6F24 /* Debug */,
+				BEB7059F2864B97B008A6F24 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BEB705A02864B97B008A6F24 /* Build configuration list for PBXNativeTarget "PoopSocialUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BEB705A12864B97B008A6F24 /* Debug */,
+				BEB705A22864B97B008A6F24 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BEB7056E2864B97A008A6F24 /* Project object */;
+}
