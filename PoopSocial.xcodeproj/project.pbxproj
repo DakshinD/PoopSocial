@@ -15,11 +15,24 @@
 		BEB705952864B97B008A6F24 /* PoopSocialUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705942864B97B008A6F24 /* PoopSocialUITests.swift */; };
 		BEB705972864B97B008A6F24 /* PoopSocialUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705962864B97B008A6F24 /* PoopSocialUITestsLaunchTests.swift */; };
 		BEB705A42864C470008A6F24 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705A32864C470008A6F24 /* ContentView.swift */; };
-		BEB705AB2864C977008A6F24 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BEB705AA2864C977008A6F24 /* GoogleService-Info.plist */; };
 		BEB705AD2864CF02008A6F24 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705AC2864CF02008A6F24 /* ImagePicker.swift */; };
 		BEB705B82864E1FD008A6F24 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BEB705B72864E1FD008A6F24 /* FirebaseAuth */; };
 		BEB705BA2864E1FD008A6F24 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = BEB705B92864E1FD008A6F24 /* FirebaseFirestore */; };
 		BEB705BC2864E1FD008A6F24 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = BEB705BB2864E1FD008A6F24 /* FirebaseStorage */; };
+		BEB705BF2864EA2C008A6F24 /* MainMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705BE2864EA2C008A6F24 /* MainMessagesView.swift */; };
+		BEB705C22864EBEE008A6F24 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705C12864EBEE008A6F24 /* FirebaseManager.swift */; };
+		BEB705C52864F40C008A6F24 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = BEB705C42864F40C008A6F24 /* SDWebImageSwiftUI */; };
+		BEB705C8286514D0008A6F24 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705C7286514D0008A6F24 /* User.swift */; };
+		BEB705CE28661558008A6F24 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BEB705CD28661558008A6F24 /* GoogleService-Info.plist */; };
+		BEB705D128661581008A6F24 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705D028661581008A6F24 /* Extensions.swift */; };
+		BEB705D3286615CF008A6F24 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705D2286615CF008A6F24 /* ColorManager.swift */; };
+		BEB705D628661BDC008A6F24 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705D528661BDC008A6F24 /* FriendsView.swift */; };
+		BEB705D928661ED2008A6F24 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705D828661ED2008A6F24 /* UserData.swift */; };
+		BEB705DB28662050008A6F24 /* AddFriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705DA28662050008A6F24 /* AddFriendView.swift */; };
+		BEB705DD286625F3008A6F24 /* AddFriendRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705DC286625F3008A6F24 /* AddFriendRowView.swift */; };
+		BEB705DF28664849008A6F24 /* Friendship.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705DE28664849008A6F24 /* Friendship.swift */; };
+		BEB705E1286785B3008A6F24 /* FollowRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705E0286785B3008A6F24 /* FollowRequestView.swift */; };
+		BEB705E328678F70008A6F24 /* FollowRequestRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705E228678F70008A6F24 /* FollowRequestRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,8 +64,20 @@
 		BEB705942864B97B008A6F24 /* PoopSocialUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopSocialUITests.swift; sourceTree = "<group>"; };
 		BEB705962864B97B008A6F24 /* PoopSocialUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopSocialUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		BEB705A32864C470008A6F24 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		BEB705AA2864C977008A6F24 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BEB705AC2864CF02008A6F24 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		BEB705BE2864EA2C008A6F24 /* MainMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMessagesView.swift; sourceTree = "<group>"; };
+		BEB705C12864EBEE008A6F24 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		BEB705C7286514D0008A6F24 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BEB705CD28661558008A6F24 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../.Trash/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BEB705D028661581008A6F24 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		BEB705D2286615CF008A6F24 /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
+		BEB705D528661BDC008A6F24 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
+		BEB705D828661ED2008A6F24 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		BEB705DA28662050008A6F24 /* AddFriendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendView.swift; sourceTree = "<group>"; };
+		BEB705DC286625F3008A6F24 /* AddFriendRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendRowView.swift; sourceTree = "<group>"; };
+		BEB705DE28664849008A6F24 /* Friendship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friendship.swift; sourceTree = "<group>"; };
+		BEB705E0286785B3008A6F24 /* FollowRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowRequestView.swift; sourceTree = "<group>"; };
+		BEB705E228678F70008A6F24 /* FollowRequestRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowRequestRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEB705C52864F40C008A6F24 /* SDWebImageSwiftUI in Frameworks */,
 				BEB705B82864E1FD008A6F24 /* FirebaseAuth in Frameworks */,
 				BEB705BA2864E1FD008A6F24 /* FirebaseFirestore in Frameworks */,
 				BEB705BC2864E1FD008A6F24 /* FirebaseStorage in Frameworks */,
@@ -106,12 +132,11 @@
 		BEB705782864B97A008A6F24 /* PoopSocial */ = {
 			isa = PBXGroup;
 			children = (
-				BEB705792864B97A008A6F24 /* PoopSocialApp.swift */,
-				BEB705A32864C470008A6F24 /* ContentView.swift */,
-				BEB7057B2864B97A008A6F24 /* LoginView.swift */,
-				BEB705AC2864CF02008A6F24 /* ImagePicker.swift */,
-				BEB705AA2864C977008A6F24 /* GoogleService-Info.plist */,
-				BEB7057D2864B97B008A6F24 /* Assets.xcassets */,
+				BEB705C6286514B3008A6F24 /* Models */,
+				BEB705C02864EBDC008A6F24 /* Managers */,
+				BEB705C928661489008A6F24 /* Views */,
+				BEB705CF28661571008A6F24 /* Extensions */,
+				BEB705CA286614AD008A6F24 /* Supporting */,
 				BEB7057F2864B97B008A6F24 /* Preview Content */,
 			);
 			path = PoopSocial;
@@ -142,6 +167,83 @@
 			path = PoopSocialUITests;
 			sourceTree = "<group>";
 		};
+		BEB705BD2864EA13008A6F24 /* MainMessagesView */ = {
+			isa = PBXGroup;
+			children = (
+				BEB705BE2864EA2C008A6F24 /* MainMessagesView.swift */,
+			);
+			path = MainMessagesView;
+			sourceTree = "<group>";
+		};
+		BEB705C02864EBDC008A6F24 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				BEB705C12864EBEE008A6F24 /* FirebaseManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		BEB705C6286514B3008A6F24 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BEB705C7286514D0008A6F24 /* User.swift */,
+				BEB705DE28664849008A6F24 /* Friendship.swift */,
+				BEB705D728661EAD008A6F24 /* Data */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BEB705C928661489008A6F24 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BEB705792864B97A008A6F24 /* PoopSocialApp.swift */,
+				BEB705A32864C470008A6F24 /* ContentView.swift */,
+				BEB7057B2864B97A008A6F24 /* LoginView.swift */,
+				BEB705AC2864CF02008A6F24 /* ImagePicker.swift */,
+				BEB705D428661BBC008A6F24 /* Friends Views */,
+				BEB705BD2864EA13008A6F24 /* MainMessagesView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BEB705CA286614AD008A6F24 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				BEB7057D2864B97B008A6F24 /* Assets.xcassets */,
+				BEB705CD28661558008A6F24 /* GoogleService-Info.plist */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+		BEB705CF28661571008A6F24 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BEB705D028661581008A6F24 /* Extensions.swift */,
+				BEB705D2286615CF008A6F24 /* ColorManager.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BEB705D428661BBC008A6F24 /* Friends Views */ = {
+			isa = PBXGroup;
+			children = (
+				BEB705D528661BDC008A6F24 /* FriendsView.swift */,
+				BEB705DA28662050008A6F24 /* AddFriendView.swift */,
+				BEB705DC286625F3008A6F24 /* AddFriendRowView.swift */,
+				BEB705E0286785B3008A6F24 /* FollowRequestView.swift */,
+				BEB705E228678F70008A6F24 /* FollowRequestRow.swift */,
+			);
+			path = "Friends Views";
+			sourceTree = "<group>";
+		};
+		BEB705D728661EAD008A6F24 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				BEB705D828661ED2008A6F24 /* UserData.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -162,6 +264,7 @@
 				BEB705B72864E1FD008A6F24 /* FirebaseAuth */,
 				BEB705B92864E1FD008A6F24 /* FirebaseFirestore */,
 				BEB705BB2864E1FD008A6F24 /* FirebaseStorage */,
+				BEB705C42864F40C008A6F24 /* SDWebImageSwiftUI */,
 			);
 			productName = PoopSocial;
 			productReference = BEB705762864B97A008A6F24 /* PoopSocial.app */;
@@ -237,6 +340,7 @@
 			mainGroup = BEB7056D2864B97A008A6F24;
 			packageReferences = (
 				BEB705B62864E1FD008A6F24 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				BEB705C32864F40C008A6F24 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = BEB705772864B97A008A6F24 /* Products */;
 			projectDirPath = "";
@@ -255,8 +359,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEB705812864B97B008A6F24 /* Preview Assets.xcassets in Resources */,
+				BEB705CE28661558008A6F24 /* GoogleService-Info.plist in Resources */,
 				BEB7057E2864B97B008A6F24 /* Assets.xcassets in Resources */,
-				BEB705AB2864C977008A6F24 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,10 +385,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEB705D628661BDC008A6F24 /* FriendsView.swift in Sources */,
+				BEB705C22864EBEE008A6F24 /* FirebaseManager.swift in Sources */,
 				BEB7057C2864B97A008A6F24 /* LoginView.swift in Sources */,
+				BEB705DF28664849008A6F24 /* Friendship.swift in Sources */,
 				BEB705AD2864CF02008A6F24 /* ImagePicker.swift in Sources */,
+				BEB705E328678F70008A6F24 /* FollowRequestRow.swift in Sources */,
+				BEB705D128661581008A6F24 /* Extensions.swift in Sources */,
+				BEB705D928661ED2008A6F24 /* UserData.swift in Sources */,
+				BEB705DB28662050008A6F24 /* AddFriendView.swift in Sources */,
 				BEB7057A2864B97A008A6F24 /* PoopSocialApp.swift in Sources */,
 				BEB705A42864C470008A6F24 /* ContentView.swift in Sources */,
+				BEB705D3286615CF008A6F24 /* ColorManager.swift in Sources */,
+				BEB705E1286785B3008A6F24 /* FollowRequestView.swift in Sources */,
+				BEB705BF2864EA2C008A6F24 /* MainMessagesView.swift in Sources */,
+				BEB705C8286514D0008A6F24 /* User.swift in Sources */,
+				BEB705DD286625F3008A6F24 /* AddFriendRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -619,6 +735,14 @@
 				kind = branch;
 			};
 		};
+		BEB705C32864F40C008A6F24 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -636,6 +760,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BEB705B62864E1FD008A6F24 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		BEB705C42864F40C008A6F24 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BEB705C32864F40C008A6F24 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

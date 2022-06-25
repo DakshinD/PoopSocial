@@ -10,27 +10,9 @@ import Firebase
 import FirebaseStorage
 import FirebaseFirestore
 
-class FirebaseManager: NSObject {
-    
-    let auth: Auth
-    let storage: Storage
-    let firestore: Firestore
-    
-    static let shared = FirebaseManager()
-    
-    override init() {
-        FirebaseApp.configure()
-        
-        self.auth = Auth.auth()
-        self.storage = Storage.storage()
-        self.firestore = Firestore.firestore()
-        
-        super.init()
-    }
-    
-}
-
 struct LoginView: View {
+    
+    let didCompleteLoginProcess: () -> ()
     
     @State private var isLoginMode = false
     @State private var email = ""
@@ -38,6 +20,7 @@ struct LoginView: View {
     @State private var shouldShowImagePicker = false
     @State private var image: UIImage?
     @State private var loginStatusMessage = ""
+    
 
     var body: some View {
         
@@ -129,6 +112,11 @@ struct LoginView: View {
     
     
     private func createNewAccount() {
+        if self.image == nil {
+            self.loginStatusMessage = "You must select an avatar image"
+            return
+        }
+        
         FirebaseManager.shared.auth.createUser(withEmail: email, password: password) { result, error in
             
             if let error = error {
@@ -146,7 +134,11 @@ struct LoginView: View {
     }
     
     private func persistsImageToStorage() {
-        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else { return }
+        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
+            print("returning here")
+            return
+        }
+        
         let ref = FirebaseManager.shared.storage.reference(withPath: uid)
         guard let imageData = self.image?.jpegData(compressionQuality: 0.5)
         else { return }
@@ -187,6 +179,8 @@ struct LoginView: View {
                     return
                 }
                 print("Success")
+                
+                self.didCompleteLoginProcess()
             }
     }
     
@@ -202,6 +196,7 @@ struct LoginView: View {
             print("Successfully logged in user: \(result?.user.uid ?? "")")
             
             self.loginStatusMessage = "Successfully logged in as user: \(result?.user.uid ?? "")"
+            self.didCompleteLoginProcess()
         }
         
     }
@@ -209,6 +204,6 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView(didCompleteLoginProcess:{} )
     }
 }

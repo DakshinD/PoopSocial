@@ -13,7 +13,9 @@ struct PoopSocialApp: App {
     
     var body: some Scene {
         WindowGroup {
-            LoginView()
+            //LoginView()
+            //MainMessagesView()
+            ContentView()
         }
     }
 }
