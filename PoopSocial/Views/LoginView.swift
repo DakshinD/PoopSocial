@@ -21,6 +21,9 @@ struct LoginView: View {
     @State private var image: UIImage?
     @State private var loginStatusMessage = ""
     
+    @EnvironmentObject var friendVM: FriendsViewModel
+
+    
 
     var body: some View {
         
@@ -196,6 +199,7 @@ struct LoginView: View {
             print("Successfully logged in user: \(result?.user.uid ?? "")")
             
             self.loginStatusMessage = "Successfully logged in as user: \(result?.user.uid ?? "")"
+            friendVM.refreshData()
             self.didCompleteLoginProcess()
         }
         

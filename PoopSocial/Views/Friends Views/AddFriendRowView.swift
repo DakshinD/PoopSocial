@@ -12,13 +12,12 @@ struct AddFriendRowView: View {
     
     var user: User
     
-    @ObservedObject var friendVM: FriendsViewModel
-    
+    @EnvironmentObject var friendVM: FriendsViewModel
+
     @State private var friendRequestStatus: String
     
-    init(user: User, initialStatus: String, friendVM: FriendsViewModel) {
+    init(user: User, initialStatus: String) {
         self.user = user
-        self.friendVM = friendVM
         friendRequestStatus = initialStatus
     }
     
@@ -58,25 +57,39 @@ struct AddFriendRowView: View {
                 ZStack {
                     Capsule()
                         .strokeBorder(.black, lineWidth: 2)
-                        .frame(width: 85, height: 35)
-                        .background(Capsule().fill(Color.accent.opacity((friendRequestStatus == "pending") ? 0.4 : 0.7)))
+                        .frame(width: 100, height: 35)
+                        .background(Capsule().fill(Color.accent.opacity((friendRequestStatus == "Pending" || friendRequestStatus == "Following") ? 0.4 : 0.7)))
                         
                     
                     Text(friendRequestStatus)
                         .foregroundColor(Color.text)
                 }
             }
-            .disabled((friendRequestStatus == "pending" || friendRequestStatus == "accepted"))
+            .disabled((friendRequestStatus == "Pending" || friendRequestStatus == "Following"))
         }
         .padding()
+        .onAppear {
+            getFriendshipStatus()
+        }
         
     }
     
     func getFriendshipStatus() {
         print("GET FRIENDSHIPSTATUS WAS CALLED")
         let status: String = friendVM.checkCurrentFriendshipStatus(userA: FirebaseManager.shared.auth.currentUser?.uid ?? "", userB: self.user.uid)
-        self.friendRequestStatus = status
-        print("friend request status: \(friendRequestStatus)")
+        
+        switch status {
+        case "Add":
+                friendRequestStatus = "Add"
+        case "pending":
+                friendRequestStatus = "Pending"
+        case "accepted":
+                friendRequestStatus = "Following"
+        default:
+            friendRequestStatus = "Add"
+            
+        }
+        //print("friend request status: \(friendRequestStatus)")
     }
     
     /*@ViewBuilder
@@ -125,6 +138,6 @@ struct AddFriendRowView: View {
 struct AddFriendRowView_Previews: PreviewProvider {
     static var previews: some View {
         //EmptyView()
-        AddFriendRowView(user: User(data: [:]), initialStatus: "add", friendVM: FriendsViewModel())
+        EmptyView()//AddFriendRowView(user: User(data: [:]), initialStatus: "add", friendVM: FriendsViewModel())
     }
 }

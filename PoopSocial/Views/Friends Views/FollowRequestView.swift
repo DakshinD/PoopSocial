@@ -12,13 +12,7 @@ struct FollowRequestView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
-    @ObservedObject var friendVM: FriendsViewModel
-    
-    init(friendVM : FriendsViewModel) {
-        self.friendVM = friendVM
-        
-        fetchFriendRequests()
-    }
+    @EnvironmentObject var friendVM: FriendsViewModel
 
     
     var body: some View {
@@ -32,7 +26,7 @@ struct FollowRequestView: View {
                     
                     List {
                         ForEach(friendVM.allFriendRequests) { request in //id is the users uid
-                            FollowRequestRow(user: friendVM.getUserFromUID(uid: request.userA)!, friendVM: friendVM) // fix force unwrap
+                            FollowRequestRow(user: friendVM.getUserFromUID(uid: request.userA)!) // fix force unwrap
                         }
                     }
                     .listStyle(InsetGroupedListStyle())
@@ -40,6 +34,10 @@ struct FollowRequestView: View {
                 
             }
             .navigationTitle("Follow Requests")
+            .onAppear {
+                fetchFriendRequests()
+                friendVM.fetchNewFriends()
+            }
         }
     }
     
@@ -48,6 +46,7 @@ struct FollowRequestView: View {
         FirebaseManager.shared.firestore
             .collection("friendships")
             .whereField("userB", isEqualTo: FirebaseManager.shared.auth.currentUser?.uid ?? "")
+            .whereField("status", isEqualTo: "pending")
             .addSnapshotListener { documents, error in
                 
                 if let error = error {
@@ -66,6 +65,8 @@ struct FollowRequestView: View {
                             }
                         }
                         friendVM.allFriendRequests.append(friendRequest)
+                        
+                        // i need to refresh the statuses in the add friends page
                     }
                 })
             }

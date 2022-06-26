@@ -12,6 +12,8 @@ import SDWebImageSwiftUI
 
 class MainMessagesViewModel: ObservableObject {
     
+    @EnvironmentObject var friendVM: FriendsViewModel
+
     @Published var errorMessage = ""
     @Published var user: User?
     @Published var isUserCurrentlyLoggedOut = false

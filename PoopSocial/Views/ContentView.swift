@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @EnvironmentObject var friendVM: FriendsViewModel
+    
     var body: some View {
         
         TabView {
@@ -24,6 +27,7 @@ struct ContentView: View {
                     Image(systemName: "person.3.fill")
                     Text("Friends")
                 }
+                .environmentObject(friendVM)
             
             Text("Leaderboard")
                 .tabItem {

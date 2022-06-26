@@ -10,9 +10,9 @@ import SDWebImageSwiftUI
 
 struct FollowRequestRow: View {
     
-    var user: User
-    @ObservedObject var friendVM : FriendsViewModel
-    
+    var user: User // from user
+    @EnvironmentObject var friendVM: FriendsViewModel
+
     var body: some View {
         HStack {
             WebImage(url: URL(string: user.profileImageUrl ?? ""))
@@ -34,7 +34,7 @@ struct FollowRequestRow: View {
             Spacer()
             
             Button(action: {
-                print("accept pressed")
+                acceptFriendRequest()
             }) {
                 ZStack {
                     Circle()
@@ -49,7 +49,7 @@ struct FollowRequestRow: View {
             .buttonStyle(BorderlessButtonStyle())
             
             Button(action: {
-                print("reject pressed")
+                rejectFriendRequest()
             }) {
                 ZStack {
                     Circle()
@@ -68,10 +68,49 @@ struct FollowRequestRow: View {
     
     func acceptFriendRequest() {
         // modify status property in friendship document then reload the friends array
+        let documentID = user.uid + (FirebaseManager.shared.auth.currentUser?.uid ?? "")
+        FirebaseManager.shared.firestore.collection("friendships").document(documentID).updateData([
+            "status": "accepted"
+        ]) { error in
+            if let error = error {
+                print("Error in accepting friend request document: \(error.localizedDescription)")
+                return
+            } else {
+                print("Successfully modified friend request document")
+            }
+        }
+        // refresh list
+        friendVM.allFriendRequests.removeAll(where: {
+            $0.userA == user.uid && $0.userB == FirebaseManager.shared.auth.currentUser?.uid
+        })
+
+        
+        // refresh friends list
+        print("FETCHING ALL FRIENDSHIPS")
+        friendVM.fetchAllFriendships {
+            print("FETCHING ALL FRIENDS")
+            friendVM.fetchAllFriends()
+        }
     }
     
     func rejectFriendRequest() {
         // delete friendship document
+        let documentID = user.uid + (FirebaseManager.shared.auth.currentUser?.uid ?? "")
+        FirebaseManager.shared.firestore.collection("friendships").document(documentID)
+            .delete { error in
+                if let error = error {
+                    print("Error in deleting friend request document: \(error.localizedDescription)")
+                    return
+                }
+            }
+        // refresh list
+        friendVM.allFriendRequests.removeAll(where: {
+            $0.userA == user.uid && $0.userB == FirebaseManager.shared.auth.currentUser?.uid
+        })
+
+        
+        print("Friend Requests: \(friendVM.allFriendRequests)")
+        
     }
 }
 

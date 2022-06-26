@@ -11,11 +11,14 @@ import SwiftUI
 @main
 struct PoopSocialApp: App {
     
+    @StateObject private var friendVM: FriendsViewModel = FriendsViewModel()
+    
     var body: some Scene {
         WindowGroup {
             //LoginView()
             //MainMessagesView()
             ContentView()
+                .environmentObject(friendVM)
         }
     }
 }

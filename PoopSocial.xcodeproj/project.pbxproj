@@ -33,6 +33,7 @@
 		BEB705DF28664849008A6F24 /* Friendship.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705DE28664849008A6F24 /* Friendship.swift */; };
 		BEB705E1286785B3008A6F24 /* FollowRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705E0286785B3008A6F24 /* FollowRequestView.swift */; };
 		BEB705E328678F70008A6F24 /* FollowRequestRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705E228678F70008A6F24 /* FollowRequestRow.swift */; };
+		BEB705EB2868E4B5008A6F24 /* FriendsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705EA2868E4B5008A6F24 /* FriendsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		BEB705DE28664849008A6F24 /* Friendship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friendship.swift; sourceTree = "<group>"; };
 		BEB705E0286785B3008A6F24 /* FollowRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowRequestView.swift; sourceTree = "<group>"; };
 		BEB705E228678F70008A6F24 /* FollowRequestRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowRequestRow.swift; sourceTree = "<group>"; };
+		BEB705EA2868E4B5008A6F24 /* FriendsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				BEB705D528661BDC008A6F24 /* FriendsView.swift */,
+				BEB705EA2868E4B5008A6F24 /* FriendsViewModel.swift */,
 				BEB705DA28662050008A6F24 /* AddFriendView.swift */,
 				BEB705DC286625F3008A6F24 /* AddFriendRowView.swift */,
 				BEB705E0286785B3008A6F24 /* FollowRequestView.swift */,
@@ -254,6 +257,7 @@
 				BEB705722864B97A008A6F24 /* Sources */,
 				BEB705732864B97A008A6F24 /* Frameworks */,
 				BEB705742864B97A008A6F24 /* Resources */,
+				BEB705E92867F339008A6F24 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -380,6 +384,26 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		BEB705E92867F339008A6F24 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncustom_sim=`xcrun simctl list | grep 'Custom Simulators' | awk -F'[()]' '{print $2}'`\nif [ ! -z \"${custom_sim}\" ] && [ \"${TARGET_DEVICE_IDENTIFIER}\" = \"${custom_sim}\" ]; then\n/bin/sh multipleSimulatorsStartup.sh\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BEB705722864B97A008A6F24 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -398,6 +422,7 @@
 				BEB705A42864C470008A6F24 /* ContentView.swift in Sources */,
 				BEB705D3286615CF008A6F24 /* ColorManager.swift in Sources */,
 				BEB705E1286785B3008A6F24 /* FollowRequestView.swift in Sources */,
+				BEB705EB2868E4B5008A6F24 /* FriendsViewModel.swift in Sources */,
 				BEB705BF2864EA2C008A6F24 /* MainMessagesView.swift in Sources */,
 				BEB705C8286514D0008A6F24 /* User.swift in Sources */,
 				BEB705DD286625F3008A6F24 /* AddFriendRowView.swift in Sources */,

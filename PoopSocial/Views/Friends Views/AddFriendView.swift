@@ -11,8 +11,8 @@ struct AddFriendView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
-    @ObservedObject var friendVM: FriendsViewModel
-    
+    @EnvironmentObject var friendVM: FriendsViewModel
+
     var body: some View {
         
         NavigationView {
@@ -25,7 +25,7 @@ struct AddFriendView: View {
                     
                     List {
                         ForEach(friendVM.allUsers, id: \.uid) { user in //id is the users uid
-                            AddFriendRowView(user: user, initialStatus: friendVM.checkCurrentFriendshipStatus(userA: FirebaseManager.shared.auth.currentUser?.uid ?? "", userB: user.uid) ,friendVM: friendVM)
+                            AddFriendRowView(user: user, initialStatus: friendVM.checkCurrentFriendshipStatus(userA: FirebaseManager.shared.auth.currentUser?.uid ?? "", userB: user.uid))
                         }
                     }
                     .listStyle(InsetGroupedListStyle())
@@ -39,6 +39,6 @@ struct AddFriendView: View {
 
 struct AddFriendView_Previews: PreviewProvider {
     static var previews: some View {
-        AddFriendView(friendVM: FriendsViewModel())
+        EmptyView() //AddFriendView(friendVM: FriendsViewModel())
     }
 }
