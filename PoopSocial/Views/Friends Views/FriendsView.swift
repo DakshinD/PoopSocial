@@ -43,7 +43,7 @@ struct FriendsView: View {
                                     )
                                     .shadow(radius: 5)
                                 
-                                Text(friend.email ?? "")
+                                Text(friend.username ?? "")
                                     .foregroundColor(Color.text)
                                     .font(.body)
                                     .padding(.horizontal)

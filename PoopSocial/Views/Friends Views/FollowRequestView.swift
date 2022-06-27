@@ -65,7 +65,7 @@ struct FollowRequestView: View {
                             }
                         }
                         friendVM.allFriendRequests.append(friendRequest)
-                        
+                        friendVM.fetchAllFriendships(completion: {})
                         // i need to refresh the statuses in the add friends page
                     }
                 })

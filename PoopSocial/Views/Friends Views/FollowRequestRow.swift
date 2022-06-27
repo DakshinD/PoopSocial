@@ -26,7 +26,7 @@ struct FollowRequestRow: View {
                 )
                 .shadow(radius: 5)
             
-            Text(user.email ?? "")
+            Text(user.username ?? "")
                 .foregroundColor(Color.text)
                 .font(.body)
                 .padding(.horizontal)
@@ -77,19 +77,18 @@ struct FollowRequestRow: View {
                 return
             } else {
                 print("Successfully modified friend request document")
+                
+                // refresh friends list
+                print("FETCHING ALL FRIENDSHIPS")
+                friendVM.fetchAllFriendships {
+                    print("FETCHING ALL FRIENDS")
+                    friendVM.fetchAllFriends()
+                }
+                // refresh list
+                friendVM.allFriendRequests.removeAll(where: {
+                    $0.userA == user.uid && $0.userB == FirebaseManager.shared.auth.currentUser?.uid
+                })
             }
-        }
-        // refresh list
-        friendVM.allFriendRequests.removeAll(where: {
-            $0.userA == user.uid && $0.userB == FirebaseManager.shared.auth.currentUser?.uid
-        })
-
-        
-        // refresh friends list
-        print("FETCHING ALL FRIENDSHIPS")
-        friendVM.fetchAllFriendships {
-            print("FETCHING ALL FRIENDS")
-            friendVM.fetchAllFriends()
         }
     }
     

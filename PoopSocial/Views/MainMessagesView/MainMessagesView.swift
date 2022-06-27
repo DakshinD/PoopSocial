@@ -94,7 +94,7 @@ struct MainMessagesView: View {
 
 
             VStack(alignment: .leading, spacing: 4) {
-                Text(messagesViewModel.user?.email ?? "")
+                Text(messagesViewModel.user?.username ?? "")
                     .font(.system(size: 24, weight: .bold))
 
                 HStack {

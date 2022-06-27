@@ -36,7 +36,7 @@ struct AddFriendRowView: View {
                 )
                 .shadow(radius: 5)
             
-            Text(user.email)
+            Text(user.username)
                 .foregroundColor(Color.text)
                 .font(.body)
                 .padding(.horizontal)

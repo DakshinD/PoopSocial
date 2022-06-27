@@ -12,6 +12,8 @@ struct AddFriendView: View {
     @Environment(\.presentationMode) var presentationMode
     
     @EnvironmentObject var friendVM: FriendsViewModel
+    
+    @State private var userSearchText: String = ""
 
     var body: some View {
         
@@ -24,17 +26,27 @@ struct AddFriendView: View {
 
                     
                     List {
-                        ForEach(friendVM.allUsers, id: \.uid) { user in //id is the users uid
+                        ForEach(filteredUsers, id: \.uid) { user in //id is the users uid
                             AddFriendRowView(user: user, initialStatus: friendVM.checkCurrentFriendshipStatus(userA: FirebaseManager.shared.auth.currentUser?.uid ?? "", userB: user.uid))
                         }
                     }
                     .listStyle(InsetGroupedListStyle())
                     .listRowBackground(Color.secondary)
+                    .searchable(text: $userSearchText, placement: .navigationBarDrawer(displayMode: .always))
+                                        
                 
             }
             .navigationTitle("Add Friends")
         }
     }
+    
+    var filteredUsers: [User] {
+            if userSearchText.isEmpty {
+                return friendVM.allUsers
+            } else {
+                return friendVM.allUsers.filter { $0.username.contains(userSearchText) }
+            }
+        }
 }
 
 struct AddFriendView_Previews: PreviewProvider {
