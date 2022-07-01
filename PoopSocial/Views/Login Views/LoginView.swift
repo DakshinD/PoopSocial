@@ -30,78 +30,95 @@ struct LoginView: View {
         
         NavigationView {
             
-            ScrollView {
-
-                VStack(spacing: 16) {
-                    Picker(selection: $isLoginMode, label: Text("Picker here")) {
-                        Text("Login")
-                            .tag(true)
-                        Text("Create Account")
-                            .tag(false)
-                    }.pickerStyle(SegmentedPickerStyle())
-
-                    if !isLoginMode {
-                        Button {
-                            shouldShowImagePicker.toggle()
-                        } label: {
-                            VStack {
-                                if let image = self.image {
-                                    Image(uiImage: image)
-                                        .resizable()
-                                        .scaledToFill()
-                                        .frame(width: 128, height: 128)
-                                        .cornerRadius(64)
-                                } else {
-                                    Image(systemName: "person.fill")
-                                        .font(.system(size: 64))
-                                        .padding()
-                                        .foregroundColor(Color(.label))
-                                }
-                            }
-                            .overlay(RoundedRectangle(cornerRadius: 64)
-                                        .stroke(Color.black, lineWidth: 3)
-                            )
-                        }
-                    }
+            ZStack {
                 
-                    Group {
-                        if !isLoginMode {
-                            TextField("Username", text: $username)
-                                .keyboardType(.default)
-                                .autocapitalization(.none)
-                        }
-                        TextField("Email", text: $email)
-                            .keyboardType(.emailAddress)
-                            .autocapitalization(.none)
-                        SecureField("Password", text: $password)
-                    }
-                    .padding(12)
-                    .background(Color.white)
+                Color.background
+                    .ignoresSafeArea()
+                
+                ScrollView {
 
-                    Button {
-                        handleAction()
-                    } label: {
-                        HStack {
-                            Spacer()
+                    VStack(spacing: 16) {
+                        Picker(selection: $isLoginMode, label: Text("Picker here")) {
+                            Text("Login")
+                                .tag(true)
+                            Text("Create Account")
+                                .tag(false)
+                        }.pickerStyle(SegmentedPickerStyle())
+
+                        if !isLoginMode {
+                            Button {
+                                shouldShowImagePicker.toggle()
+                            } label: {
+                                VStack {
+                                    if let image = self.image {
+                                        Image(uiImage: image)
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: 128, height: 128)
+                                            .cornerRadius(64)
+                                    } else {
+                                        Image(systemName: "person.fill")
+                                            .font(.system(size: 64))
+                                            .padding()
+                                            .foregroundColor(Color(.label))
+                                    }
+                                }
+                                .overlay(RoundedRectangle(cornerRadius: 64)
+                                            .stroke(Color.black, lineWidth: 3)
+                                )
+                            }
+                        }
+                    
+                        Group {
+                            if !isLoginMode {
+                                TextField("Username", text: $username)
+                                    .keyboardType(.default)
+                                    .autocapitalization(.none)
+                                    .modifier(customViewModifier(roundedCornes: 6, startColor: .orange.opacity(0.6), endColor: .red.opacity(0.6), textColor: .white))
+                            }
+                            TextField("Email", text: $email)
+                                .keyboardType(.emailAddress)
+                                .autocapitalization(.none)
+                                .modifier(customViewModifier(roundedCornes: 6, startColor: .orange.opacity(0.6), endColor: .red.opacity(0.6), textColor: .white))
+                            
+                            SecureField("Password", text: $password)
+                                .modifier(customViewModifier(roundedCornes: 6, startColor: .orange.opacity(0.6), endColor: .red.opacity(0.6), textColor: .white))
+                        }
+                        .background(Color.white)
+                        .padding(12)
+                        
+                        
+                        
+
+                        Button(action: {
+                            handleAction()
+                        }) {
+                            
                             Text(isLoginMode ? "Log In" : "Create Account")
                                 .foregroundColor(.white)
                                 .padding(.vertical, 10)
-                                .font(.system(size: 14, weight: .semibold))
-                            Spacer()
-                        }.background(Color.blue)
-
+                                .font(.system(size: 25, weight: .bold))
+                                
+                        }
+                        .buttonStyle(CustomGradientButton())
+                        .frame(width: 225)
+                        .padding()
+                        
+                        Text(self.loginStatusMessage)
+                            .foregroundColor(.red)
+                            .background(RoundedRectangle(cornerRadius: 15).fill(Color.secondary.opacity(0.7)))
+                        
                     }
-                    
-                    Text(self.loginStatusMessage)
-                        .foregroundColor(.red)
-                    
-                }
-                .padding()
+                    .padding()
 
+                }
+                .navigationTitle(isLoginMode ? "Log In" : "Create Account")
+                .background(Color(.init(white: 0, alpha: 0.05))
+                                .ignoresSafeArea())
+                
             }
-            .navigationTitle(isLoginMode ? "Log In" : "Create Account")
-            .background(Color(.init(white: 0, alpha: 0.05))
-                            .ignoresSafeArea())
+            
+            
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .fullScreenCover(isPresented: $shouldShowImagePicker, onDismiss: nil) {
@@ -189,7 +206,7 @@ struct LoginView: View {
                 }
                 print("Success")
                 
-                self.didCompleteLoginProcess()
+                self.didCompleteLoginProcess()// update user data singleton
             }
     }
     
@@ -205,8 +222,9 @@ struct LoginView: View {
             print("Successfully logged in user: \(result?.user.uid ?? "")")
             
             self.loginStatusMessage = "Successfully logged in as user: \(result?.user.uid ?? "")"
+            
             friendVM.refreshData()
-            self.didCompleteLoginProcess()
+            self.didCompleteLoginProcess()// update user data singleton
         }
         
     }

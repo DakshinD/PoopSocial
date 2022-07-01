@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE61457D286CBD6E00656824 /* PoopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE61457C286CBD6E00656824 /* PoopView.swift */; };
+		BE61457F286CC42500656824 /* PoopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE61457E286CC42500656824 /* PoopViewModel.swift */; };
+		BE614581286CF92200656824 /* Poop.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE614580286CF92200656824 /* Poop.swift */; };
+		BE614583286E9AC700656824 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE614582286E9AC700656824 /* BadgeView.swift */; };
+		BE614585286F5B3600656824 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE614584286F5B3600656824 /* ProfileView.swift */; };
+		BEA64022286A0F5200E86612 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BEA64021286A0F5200E86612 /* FirebaseAuth */; };
+		BEA64024286A0F5200E86612 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = BEA64023286A0F5200E86612 /* FirebaseFirestore */; };
+		BEA64026286A0F5200E86612 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BEA64025286A0F5200E86612 /* FirebaseFirestoreSwift */; };
+		BEA64028286A0F5200E86612 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = BEA64027286A0F5200E86612 /* FirebaseMessaging */; };
+		BEA6402A286A0F5200E86612 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = BEA64029286A0F5200E86612 /* FirebaseStorage */; };
+		BEA64030286A144D00E86612 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA6402F286A144D00E86612 /* AppDelegate.swift */; };
+		BEA64035286A7BA100E86612 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA64034286A7BA100E86612 /* PushNotificationManager.swift */; };
 		BEB7057A2864B97A008A6F24 /* PoopSocialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705792864B97A008A6F24 /* PoopSocialApp.swift */; };
 		BEB7057C2864B97A008A6F24 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7057B2864B97A008A6F24 /* LoginView.swift */; };
 		BEB7057E2864B97B008A6F24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEB7057D2864B97B008A6F24 /* Assets.xcassets */; };
@@ -16,9 +28,6 @@
 		BEB705972864B97B008A6F24 /* PoopSocialUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705962864B97B008A6F24 /* PoopSocialUITestsLaunchTests.swift */; };
 		BEB705A42864C470008A6F24 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705A32864C470008A6F24 /* ContentView.swift */; };
 		BEB705AD2864CF02008A6F24 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705AC2864CF02008A6F24 /* ImagePicker.swift */; };
-		BEB705B82864E1FD008A6F24 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BEB705B72864E1FD008A6F24 /* FirebaseAuth */; };
-		BEB705BA2864E1FD008A6F24 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = BEB705B92864E1FD008A6F24 /* FirebaseFirestore */; };
-		BEB705BC2864E1FD008A6F24 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = BEB705BB2864E1FD008A6F24 /* FirebaseStorage */; };
 		BEB705BF2864EA2C008A6F24 /* MainMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705BE2864EA2C008A6F24 /* MainMessagesView.swift */; };
 		BEB705C22864EBEE008A6F24 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705C12864EBEE008A6F24 /* FirebaseManager.swift */; };
 		BEB705C52864F40C008A6F24 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = BEB705C42864F40C008A6F24 /* SDWebImageSwiftUI */; };
@@ -54,6 +63,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BE61457C286CBD6E00656824 /* PoopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopView.swift; sourceTree = "<group>"; };
+		BE61457E286CC42500656824 /* PoopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopViewModel.swift; sourceTree = "<group>"; };
+		BE614580286CF92200656824 /* Poop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poop.swift; sourceTree = "<group>"; };
+		BE614582286E9AC700656824 /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
+		BE614584286F5B3600656824 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		BEA6402E286A141F00E86612 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BEA6402F286A144D00E86612 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BEA64031286A14A300E86612 /* PoopSocial.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PoopSocial.entitlements; sourceTree = "<group>"; };
+		BEA64034286A7BA100E86612 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
 		BEB705762864B97A008A6F24 /* PoopSocial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PoopSocial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEB705792864B97A008A6F24 /* PoopSocialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopSocialApp.swift; sourceTree = "<group>"; };
 		BEB7057B2864B97A008A6F24 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -88,9 +106,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEB705C52864F40C008A6F24 /* SDWebImageSwiftUI in Frameworks */,
-				BEB705B82864E1FD008A6F24 /* FirebaseAuth in Frameworks */,
-				BEB705BA2864E1FD008A6F24 /* FirebaseFirestore in Frameworks */,
-				BEB705BC2864E1FD008A6F24 /* FirebaseStorage in Frameworks */,
+				BEA64022286A0F5200E86612 /* FirebaseAuth in Frameworks */,
+				BEA64028286A0F5200E86612 /* FirebaseMessaging in Frameworks */,
+				BEA64024286A0F5200E86612 /* FirebaseFirestore in Frameworks */,
+				BEA64026286A0F5200E86612 /* FirebaseFirestoreSwift in Frameworks */,
+				BEA6402A286A0F5200E86612 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +131,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE61457B286CBD4F00656824 /* Poop Views */ = {
+			isa = PBXGroup;
+			children = (
+				BE61457C286CBD6E00656824 /* PoopView.swift */,
+				BE61457E286CC42500656824 /* PoopViewModel.swift */,
+				BE614584286F5B3600656824 /* ProfileView.swift */,
+			);
+			path = "Poop Views";
+			sourceTree = "<group>";
+		};
+		BEA6402B286A0F6700E86612 /* Main Views */ = {
+			isa = PBXGroup;
+			children = (
+				BEB705792864B97A008A6F24 /* PoopSocialApp.swift */,
+				BEB705A32864C470008A6F24 /* ContentView.swift */,
+				BEA6402F286A144D00E86612 /* AppDelegate.swift */,
+			);
+			path = "Main Views";
+			sourceTree = "<group>";
+		};
+		BEA6402C286A0F8B00E86612 /* Login Views */ = {
+			isa = PBXGroup;
+			children = (
+				BEB7057B2864B97A008A6F24 /* LoginView.swift */,
+			);
+			path = "Login Views";
+			sourceTree = "<group>";
+		};
+		BEA6402D286A0FA300E86612 /* Utility Views */ = {
+			isa = PBXGroup;
+			children = (
+				BEB705AC2864CF02008A6F24 /* ImagePicker.swift */,
+				BE614582286E9AC700656824 /* BadgeView.swift */,
+			);
+			path = "Utility Views";
+			sourceTree = "<group>";
+		};
 		BEB7056D2864B97A008A6F24 = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +191,8 @@
 		BEB705782864B97A008A6F24 /* PoopSocial */ = {
 			isa = PBXGroup;
 			children = (
+				BEA6402E286A141F00E86612 /* Info.plist */,
+				BEA64031286A14A300E86612 /* PoopSocial.entitlements */,
 				BEB705C6286514B3008A6F24 /* Models */,
 				BEB705C02864EBDC008A6F24 /* Managers */,
 				BEB705C928661489008A6F24 /* Views */,
@@ -181,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				BEB705C12864EBEE008A6F24 /* FirebaseManager.swift */,
+				BEA64034286A7BA100E86612 /* PushNotificationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -190,6 +250,7 @@
 			children = (
 				BEB705C7286514D0008A6F24 /* User.swift */,
 				BEB705DE28664849008A6F24 /* Friendship.swift */,
+				BE614580286CF92200656824 /* Poop.swift */,
 				BEB705D728661EAD008A6F24 /* Data */,
 			);
 			path = Models;
@@ -198,12 +259,12 @@
 		BEB705C928661489008A6F24 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				BEB705792864B97A008A6F24 /* PoopSocialApp.swift */,
-				BEB705A32864C470008A6F24 /* ContentView.swift */,
-				BEB7057B2864B97A008A6F24 /* LoginView.swift */,
-				BEB705AC2864CF02008A6F24 /* ImagePicker.swift */,
+				BEA6402B286A0F6700E86612 /* Main Views */,
+				BE61457B286CBD4F00656824 /* Poop Views */,
+				BEA6402C286A0F8B00E86612 /* Login Views */,
 				BEB705D428661BBC008A6F24 /* Friends Views */,
 				BEB705BD2864EA13008A6F24 /* MainMessagesView */,
+				BEA6402D286A0FA300E86612 /* Utility Views */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -265,10 +326,12 @@
 			);
 			name = PoopSocial;
 			packageProductDependencies = (
-				BEB705B72864E1FD008A6F24 /* FirebaseAuth */,
-				BEB705B92864E1FD008A6F24 /* FirebaseFirestore */,
-				BEB705BB2864E1FD008A6F24 /* FirebaseStorage */,
 				BEB705C42864F40C008A6F24 /* SDWebImageSwiftUI */,
+				BEA64021286A0F5200E86612 /* FirebaseAuth */,
+				BEA64023286A0F5200E86612 /* FirebaseFirestore */,
+				BEA64025286A0F5200E86612 /* FirebaseFirestoreSwift */,
+				BEA64027286A0F5200E86612 /* FirebaseMessaging */,
+				BEA64029286A0F5200E86612 /* FirebaseStorage */,
 			);
 			productName = PoopSocial;
 			productReference = BEB705762864B97A008A6F24 /* PoopSocial.app */;
@@ -343,8 +406,8 @@
 			);
 			mainGroup = BEB7056D2864B97A008A6F24;
 			packageReferences = (
-				BEB705B62864E1FD008A6F24 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				BEB705C32864F40C008A6F24 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				BEA64020286A0F5200E86612 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = BEB705772864B97A008A6F24 /* Products */;
 			projectDirPath = "";
@@ -412,15 +475,22 @@
 				BEB705D628661BDC008A6F24 /* FriendsView.swift in Sources */,
 				BEB705C22864EBEE008A6F24 /* FirebaseManager.swift in Sources */,
 				BEB7057C2864B97A008A6F24 /* LoginView.swift in Sources */,
+				BE614581286CF92200656824 /* Poop.swift in Sources */,
 				BEB705DF28664849008A6F24 /* Friendship.swift in Sources */,
+				BE614583286E9AC700656824 /* BadgeView.swift in Sources */,
 				BEB705AD2864CF02008A6F24 /* ImagePicker.swift in Sources */,
 				BEB705E328678F70008A6F24 /* FollowRequestRow.swift in Sources */,
+				BE61457D286CBD6E00656824 /* PoopView.swift in Sources */,
 				BEB705D128661581008A6F24 /* Extensions.swift in Sources */,
 				BEB705D928661ED2008A6F24 /* UserData.swift in Sources */,
 				BEB705DB28662050008A6F24 /* AddFriendView.swift in Sources */,
 				BEB7057A2864B97A008A6F24 /* PoopSocialApp.swift in Sources */,
 				BEB705A42864C470008A6F24 /* ContentView.swift in Sources */,
+				BE61457F286CC42500656824 /* PoopViewModel.swift in Sources */,
 				BEB705D3286615CF008A6F24 /* ColorManager.swift in Sources */,
+				BE614585286F5B3600656824 /* ProfileView.swift in Sources */,
+				BEA64030286A144D00E86612 /* AppDelegate.swift in Sources */,
+				BEA64035286A7BA100E86612 /* PushNotificationManager.swift in Sources */,
 				BEB705E1286785B3008A6F24 /* FollowRequestView.swift in Sources */,
 				BEB705EB2868E4B5008A6F24 /* FriendsViewModel.swift in Sources */,
 				BEB705BF2864EA2C008A6F24 /* MainMessagesView.swift in Sources */,
@@ -581,12 +651,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PoopSocial/PoopSocial.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PoopSocial/Preview Content\"";
 				DEVELOPMENT_TEAM = AVT7P4879D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PoopSocial/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -610,12 +682,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PoopSocial/PoopSocial.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PoopSocial/Preview Content\"";
 				DEVELOPMENT_TEAM = AVT7P4879D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PoopSocial/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -752,7 +826,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		BEB705B62864E1FD008A6F24 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		BEA64020286A0F5200E86612 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
@@ -771,19 +845,29 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BEB705B72864E1FD008A6F24 /* FirebaseAuth */ = {
+		BEA64021286A0F5200E86612 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = BEB705B62864E1FD008A6F24 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = BEA64020286A0F5200E86612 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
 		};
-		BEB705B92864E1FD008A6F24 /* FirebaseFirestore */ = {
+		BEA64023286A0F5200E86612 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = BEB705B62864E1FD008A6F24 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = BEA64020286A0F5200E86612 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
-		BEB705BB2864E1FD008A6F24 /* FirebaseStorage */ = {
+		BEA64025286A0F5200E86612 /* FirebaseFirestoreSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = BEB705B62864E1FD008A6F24 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = BEA64020286A0F5200E86612 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		BEA64027286A0F5200E86612 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BEA64020286A0F5200E86612 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		BEA64029286A0F5200E86612 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BEA64020286A0F5200E86612 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
 		};
 		BEB705C42864F40C008A6F24 /* SDWebImageSwiftUI */ = {

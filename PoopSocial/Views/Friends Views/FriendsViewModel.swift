@@ -17,10 +17,24 @@ class FriendsViewModel: ObservableObject {
     
     @Published var allFriendRequests: [Friendship] = [Friendship]()
     
+    @Published var friendRequestCount: Int = 0
+    
     @Published var errorMessage: String = ""
     
     init() {
         
+        fetchAllUsers() {
+            
+            self.fetchAllFriendships() {
+                
+                self.fetchAllFriends()
+                
+            }
+            
+        }
+    }
+    
+    public func refreshAllData() {
         fetchAllUsers() {
             
             self.fetchAllFriendships() {
@@ -61,11 +75,11 @@ class FriendsViewModel: ObservableObject {
                 documents?.documents.forEach({ document in
                     let data = document.data()
                     let user = User(data: data)
-                    if user.uid != FirebaseManager.shared.auth.currentUser?.uid {
+                    //if user.uid != FirebaseManager.shared.auth.currentUser?.uid {
                         // if the user retrieved is not the current user on the phone
                         tempAllUsers.append(.init(data: data))
                         //print(data)
-                    }
+                    //}
                 })
                 self.allUsers = tempAllUsers
                 print("Successfully retrieved all users")
@@ -75,12 +89,18 @@ class FriendsViewModel: ObservableObject {
     
     // has to be called after fetchAllFriendships
     public func fetchAllFriends() {
+        
+        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
+            print("User is not logged in")
+            return
+        }
+        
         print("fetching all friends")
         var tempFriends: [User] = [User]()
         for friendship in self.allFriendships {
             if friendship.status == "accepted" {
                 var tempFriend: User
-                if friendship.userA != FirebaseManager.shared.auth.currentUser?.uid {
+                if friendship.userA != uid {
                     tempFriend = self.getUserFromUID(uid: friendship.userA)!
                 } else { // watch these force unwraps
                     tempFriend = self.getUserFromUID(uid: friendship.userB)!
@@ -93,9 +113,14 @@ class FriendsViewModel: ObservableObject {
     
     public func fetchNewFriends() {
         
+        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
+            print("User is not logged in")
+            return
+        }
+        
         FirebaseManager.shared.firestore
             .collection("friendships")
-            .whereField("userA", isEqualTo: FirebaseManager.shared.auth.currentUser?.uid ?? "")
+            .whereField("userA", isEqualTo: uid)
             .addSnapshotListener { documents, error in
                 
                 if let error = error {
@@ -123,9 +148,17 @@ class FriendsViewModel: ObservableObject {
             }
     }
     
-    public func fetchAllFriendships(completion: @escaping () -> Void) { // friendships of current user
+    public func fetchAllFriendships(completion: @escaping () -> Void) { // friendships of current user - WILL HAVE TO BE CHANGED - CALLS TOO MANY DOCS AT LARGE SCALE
+        allFriendships = []
         
+        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
+            print("User is not logged in")
+            return
+        }
+        
+        // call for when userA is current user
         FirebaseManager.shared.firestore.collection("friendships")
+            .whereField("userA", isEqualTo: uid)
             .getDocuments { documents, error in
                 // Error
                 if let error = error {
@@ -135,16 +168,42 @@ class FriendsViewModel: ObservableObject {
                 }
                 
                 //Success
-                var tempFriendships: [Friendship] = [Friendship]()
+                //var tempFriendships: [Friendship] = [Friendship]()
                 documents?.documents.forEach({ document in
                     let data = document.data()
                     let friendship = Friendship(data: data)
-                    if friendship.userA == FirebaseManager.shared.auth.currentUser?.uid || friendship.userB == FirebaseManager.shared.auth.currentUser?.uid {
+                    //if friendship.userA == FirebaseManager.shared.auth.currentUser?.uid || friendship.userB == FirebaseManager.shared.auth.currentUser?.uid {
                         // if the user retrieved is not the current user on the phone
-                        tempFriendships.append(.init(data: data))
-                    }
+                    self.allFriendships.append(.init(data: data))
+                    //}
                 })
-                self.allFriendships = tempFriendships
+                //self.allFriendships = tempFriendships
+                print("Successfully rsetrieved all friendships")
+                completion()
+            }
+        
+        // call for when userB is current user
+        FirebaseManager.shared.firestore.collection("friendships")
+            .whereField("userB", isEqualTo: uid)
+            .getDocuments { documents, error in
+                // Error
+                if let error = error {
+                    self.errorMessage = "Failed to retrieve friendship documents: \(error.localizedDescription)"
+                    print("Failed to retrieve friendship documents: \(error.localizedDescription)")
+                    return
+                }
+                
+                //Success
+                //var tempFriendships: [Friendship] = [Friendship]()
+                documents?.documents.forEach({ document in
+                    let data = document.data()
+                    let friendship = Friendship(data: data)
+                    //if friendship.userA == FirebaseManager.shared.auth.currentUser?.uid || friendship.userB == FirebaseManager.shared.auth.currentUser?.uid {
+                        // if the user retrieved is not the current user on the phone
+                    self.allFriendships.append(.init(data: data))
+                    //}
+                })
+                //self.allFriendships = tempFriendships
                 print("Successfully retrieved all friendships")
                 completion()
             }

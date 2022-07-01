@@ -88,6 +88,7 @@ struct FollowRequestRow: View {
                 friendVM.allFriendRequests.removeAll(where: {
                     $0.userA == user.uid && $0.userB == FirebaseManager.shared.auth.currentUser?.uid
                 })
+                friendVM.friendRequestCount = friendVM.allFriendRequests.count //update for badge
             }
         }
     }
@@ -102,11 +103,19 @@ struct FollowRequestRow: View {
                     return
                 }
             }
+        
+        // refresh friends list
+        print("FETCHING ALL FRIENDSHIPS")
+        friendVM.fetchAllFriendships {
+            print("FETCHING ALL FRIENDS")
+            friendVM.fetchAllFriends()
+        }
+        
         // refresh list
         friendVM.allFriendRequests.removeAll(where: {
             $0.userA == user.uid && $0.userB == FirebaseManager.shared.auth.currentUser?.uid
         })
-
+        friendVM.friendRequestCount = friendVM.allFriendRequests.count // update for badge
         
         print("Friend Requests: \(friendVM.allFriendRequests)")
         

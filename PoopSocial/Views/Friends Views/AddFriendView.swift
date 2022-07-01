@@ -42,9 +42,9 @@ struct AddFriendView: View {
     
     var filteredUsers: [User] {
             if userSearchText.isEmpty {
-                return friendVM.allUsers
+                return friendVM.allUsers.filter { $0.uid != FirebaseManager.shared.auth.currentUser?.uid }
             } else {
-                return friendVM.allUsers.filter { $0.username.contains(userSearchText) }
+                return friendVM.allUsers.filter { $0.username.contains(userSearchText) && $0.uid != FirebaseManager.shared.auth.currentUser?.uid}
             }
         }
 }

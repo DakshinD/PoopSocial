@@ -10,16 +10,21 @@ import SwiftUI
 struct ContentView: View {
     
     @EnvironmentObject var friendVM: FriendsViewModel
+    @EnvironmentObject var poopVM: PoopViewModel
+    
+    @ObservedObject private var user: UserData = UserData.shared
     
     var body: some View {
         
         TabView {
             
-            MainMessagesView()//Text("Test View")
+            PoopView()//Text("Test View")
                 .tabItem {
                     Image(systemName: "person.wave.2.fill")
                     Text("Poop")
                 }
+                .environmentObject(poopVM)
+                .environmentObject(friendVM)
             
             //MainMessagesView()
             FriendsView()
@@ -43,6 +48,16 @@ struct ContentView: View {
         }
         .tabViewStyle(DefaultTabViewStyle())
         .accentColor(Color.accent)
+        .fullScreenCover(isPresented: $user.isNotLoggedIn) {
+            LoginView(didCompleteLoginProcess: {
+                //AppDelegate.updateFirestorePushTokenIfNeeded(<#T##self: AppDelegate##AppDelegate#>) do we need to do this after user logs in?
+                // need to init poop and friend view models again
+                user.isNotLoggedIn = false
+                user.fetchCurrentUser()
+                poopVM.refreshAllData()
+                friendVM.refreshAllData()
+            })
+        }
         
     }
 }

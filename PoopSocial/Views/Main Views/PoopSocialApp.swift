@@ -12,6 +12,9 @@ import SwiftUI
 struct PoopSocialApp: App {
     
     @StateObject private var friendVM: FriendsViewModel = FriendsViewModel()
+    @StateObject private var poopVM: PoopViewModel = PoopViewModel()
+    
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var body: some Scene {
         WindowGroup {
@@ -19,6 +22,8 @@ struct PoopSocialApp: App {
             //MainMessagesView()
             ContentView()
                 .environmentObject(friendVM)
+                .environmentObject(poopVM)
+            
         }
     }
 }

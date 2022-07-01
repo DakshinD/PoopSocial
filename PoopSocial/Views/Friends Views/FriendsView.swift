@@ -82,6 +82,8 @@ struct FriendsView: View {
                     }) {
                         Image(systemName: "heart.fill")
                     }
+                    .overlay(Badge(count: $friendVM.friendRequestCount))
+                    
                 }
             }
             .sheet(isPresented: $showFollowRequestView) {
