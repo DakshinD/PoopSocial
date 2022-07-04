@@ -74,15 +74,16 @@ struct LoginView: View {
                                 TextField("Username", text: $username)
                                     .keyboardType(.default)
                                     .autocapitalization(.none)
-                                    .modifier(customViewModifier(roundedCornes: 6, startColor: .orange.opacity(0.6), endColor: .red.opacity(0.6), textColor: .white))
+                                    .textFieldStyle(GradientTextFieldBackground(systemImageString: "person"))
+                                    
                             }
                             TextField("Email", text: $email)
                                 .keyboardType(.emailAddress)
                                 .autocapitalization(.none)
-                                .modifier(customViewModifier(roundedCornes: 6, startColor: .orange.opacity(0.6), endColor: .red.opacity(0.6), textColor: .white))
-                            
+                                .textFieldStyle(GradientTextFieldBackground(systemImageString: "envelope"))
+
                             SecureField("Password", text: $password)
-                                .modifier(customViewModifier(roundedCornes: 6, startColor: .orange.opacity(0.6), endColor: .red.opacity(0.6), textColor: .white))
+                                .textFieldStyle(GradientTextFieldBackground(systemImageString: "lock"))
                         }
                         .background(Color.white)
                         .padding(12)

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     @EnvironmentObject var friendVM: FriendsViewModel
     @EnvironmentObject var poopVM: PoopViewModel
     
@@ -47,10 +49,11 @@ struct ContentView: View {
                 }
         }
         .tabViewStyle(DefaultTabViewStyle())
-        .accentColor(Color.accent)
+        .accentColor(Color.orange)
         .fullScreenCover(isPresented: $user.isNotLoggedIn) {
             LoginView(didCompleteLoginProcess: {
                 //AppDelegate.updateFirestorePushTokenIfNeeded(<#T##self: AppDelegate##AppDelegate#>) do we need to do this after user logs in?
+                appDelegate.updateFirestorePushTokenIfNeeded()
                 // need to init poop and friend view models again
                 user.isNotLoggedIn = false
                 user.fetchCurrentUser()

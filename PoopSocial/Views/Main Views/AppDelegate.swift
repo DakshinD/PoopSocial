@@ -53,6 +53,11 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             return
         }
         if let token = Messaging.messaging().fcmToken {
+            // sync user and friendship collection documents when fcmToken is updated
+            
+            // update local info
+            UserData.shared.fcmToken = token
+            
             let userRef = FirebaseManager.shared.firestore.collection("users").document(uid)
             userRef.setData(["FCMToken": token], merge: true)
         }
@@ -113,6 +118,6 @@ extension AppDelegate: MessagingDelegate {
       object: nil,
       userInfo: tokenDict)
       
-      //updateFirestorePushTokenIfNeeded()
+      updateFirestorePushTokenIfNeeded()
   }
 }

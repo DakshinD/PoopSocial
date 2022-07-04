@@ -111,7 +111,7 @@ class FriendsViewModel: ObservableObject {
         self.friends = tempFriends
     }
     
-    public func fetchNewFriends() {
+    public func fetchNewFriends() { // fetch if follow requests THIS user sent has been accepted
         
         guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
             print("User is not logged in")
@@ -213,10 +213,16 @@ class FriendsViewModel: ObservableObject {
         // pending, accepted, "" - doesn't exist
         let documentID = userA + userB // friendship document ID
         
+        let userObjectA: User = self.getUserFromUID(uid: userA) ?? User(data: [:])
+        let userObjectB: User = self.getUserFromUID(uid: userB) ?? User(data: [:])
+
+        
         FirebaseManager.shared.firestore.collection("friendships").document(documentID)
             .setData([
                 "userA": userA,
+                "fcmTokenA": userObjectA.FCMToken,
                 "userB": userB,
+                "fcmTokenB": userObjectB.FCMToken,
                 "status": "pending" // when making friendship - default to pending
             ]) { error in
                 if let error = error {
