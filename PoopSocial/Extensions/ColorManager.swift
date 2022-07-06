@@ -16,5 +16,7 @@ extension Color {
     static let accentSecondary = Color("ButtonPressed")
     static let tertiary = Color("Tertiary")
     static let tertiaryText = Color("TertiaryText")
+    static let normalGradient = LinearGradient(colors: [.red, .orange, .yellow], startPoint: .topLeading, endPoint: .bottomTrailing)
+    static let dimGradient = LinearGradient(colors: [.red.opacity(0.6), .orange.opacity(0.6), .yellow.opacity(0.6)], startPoint: .topLeading, endPoint: .bottomTrailing)
     
 }

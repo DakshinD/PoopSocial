@@ -12,6 +12,10 @@
 		BE614581286CF92200656824 /* Poop.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE614580286CF92200656824 /* Poop.swift */; };
 		BE614583286E9AC700656824 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE614582286E9AC700656824 /* BadgeView.swift */; };
 		BE614585286F5B3600656824 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE614584286F5B3600656824 /* ProfileView.swift */; };
+		BE61458828737EC900656824 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE61458728737EC900656824 /* LeaderboardView.swift */; };
+		BE61458A2873C84F00656824 /* LeaderboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6145892873C84F00656824 /* LeaderboardViewModel.swift */; };
+		BE61458C2873C94E00656824 /* GlobalLeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE61458B2873C94E00656824 /* GlobalLeaderboardView.swift */; };
+		BE61458E2873C95B00656824 /* FriendLeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE61458D2873C95B00656824 /* FriendLeaderboardView.swift */; };
 		BEA64022286A0F5200E86612 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BEA64021286A0F5200E86612 /* FirebaseAuth */; };
 		BEA64024286A0F5200E86612 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = BEA64023286A0F5200E86612 /* FirebaseFirestore */; };
 		BEA64026286A0F5200E86612 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BEA64025286A0F5200E86612 /* FirebaseFirestoreSwift */; };
@@ -68,6 +72,10 @@
 		BE614580286CF92200656824 /* Poop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poop.swift; sourceTree = "<group>"; };
 		BE614582286E9AC700656824 /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		BE614584286F5B3600656824 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		BE61458728737EC900656824 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
+		BE6145892873C84F00656824 /* LeaderboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewModel.swift; sourceTree = "<group>"; };
+		BE61458B2873C94E00656824 /* GlobalLeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalLeaderboardView.swift; sourceTree = "<group>"; };
+		BE61458D2873C95B00656824 /* FriendLeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendLeaderboardView.swift; sourceTree = "<group>"; };
 		BEA6402E286A141F00E86612 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BEA6402F286A144D00E86612 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BEA64031286A14A300E86612 /* PoopSocial.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PoopSocial.entitlements; sourceTree = "<group>"; };
@@ -139,6 +147,17 @@
 				BE614584286F5B3600656824 /* ProfileView.swift */,
 			);
 			path = "Poop Views";
+			sourceTree = "<group>";
+		};
+		BE61458628737EB500656824 /* Leaderboard Views */ = {
+			isa = PBXGroup;
+			children = (
+				BE61458728737EC900656824 /* LeaderboardView.swift */,
+				BE6145892873C84F00656824 /* LeaderboardViewModel.swift */,
+				BE61458B2873C94E00656824 /* GlobalLeaderboardView.swift */,
+				BE61458D2873C95B00656824 /* FriendLeaderboardView.swift */,
+			);
+			path = "Leaderboard Views";
 			sourceTree = "<group>";
 		};
 		BEA6402B286A0F6700E86612 /* Main Views */ = {
@@ -261,6 +280,7 @@
 			children = (
 				BEA6402B286A0F6700E86612 /* Main Views */,
 				BE61457B286CBD4F00656824 /* Poop Views */,
+				BE61458628737EB500656824 /* Leaderboard Views */,
 				BEA6402C286A0F8B00E86612 /* Login Views */,
 				BEB705D428661BBC008A6F24 /* Friends Views */,
 				BEB705BD2864EA13008A6F24 /* MainMessagesView */,
@@ -474,14 +494,18 @@
 			files = (
 				BEB705D628661BDC008A6F24 /* FriendsView.swift in Sources */,
 				BEB705C22864EBEE008A6F24 /* FirebaseManager.swift in Sources */,
+				BE61458E2873C95B00656824 /* FriendLeaderboardView.swift in Sources */,
 				BEB7057C2864B97A008A6F24 /* LoginView.swift in Sources */,
 				BE614581286CF92200656824 /* Poop.swift in Sources */,
 				BEB705DF28664849008A6F24 /* Friendship.swift in Sources */,
 				BE614583286E9AC700656824 /* BadgeView.swift in Sources */,
 				BEB705AD2864CF02008A6F24 /* ImagePicker.swift in Sources */,
+				BE61458C2873C94E00656824 /* GlobalLeaderboardView.swift in Sources */,
 				BEB705E328678F70008A6F24 /* FollowRequestRow.swift in Sources */,
+				BE61458A2873C84F00656824 /* LeaderboardViewModel.swift in Sources */,
 				BE61457D286CBD6E00656824 /* PoopView.swift in Sources */,
 				BEB705D128661581008A6F24 /* Extensions.swift in Sources */,
+				BE61458828737EC900656824 /* LeaderboardView.swift in Sources */,
 				BEB705D928661ED2008A6F24 /* UserData.swift in Sources */,
 				BEB705DB28662050008A6F24 /* AddFriendView.swift in Sources */,
 				BEB7057A2864B97A008A6F24 /* PoopSocialApp.swift in Sources */,

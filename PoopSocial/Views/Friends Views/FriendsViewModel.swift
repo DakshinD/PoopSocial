@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseFirestore
 
 class FriendsViewModel: ObservableObject {
+    
+    
     
     @Published var allUsers: [User] = [User]()
     
@@ -15,15 +19,29 @@ class FriendsViewModel: ObservableObject {
     
     @Published var allFriendships: [Friendship] = [Friendship]()
     
+    @Published var allFriendIDs: [String] = [String]()// for leaderboard
+    
     @Published var allFriendRequests: [Friendship] = [Friendship]()
     
     @Published var friendRequestCount: Int = 0
     
     @Published var errorMessage: String = ""
     
+    // Leaderboard
+    @Published var globalLeaders: [(Int, User)] = []
+    
+    @Published var friendStatsList: [String : Int] = [:] // UID : Total Poops
+
+    
     init() {
         
-        fetchAllUsers() {
+        UserData.shared.fetchAllUsers() {
+            
+            UserData.shared.fetchCurrentUser()
+            
+            UserData.shared.fetchGlobalTopUsers { arr in
+                self.globalLeaders = arr
+            }
             
             self.fetchAllFriendships() {
                 
@@ -35,7 +53,7 @@ class FriendsViewModel: ObservableObject {
     }
     
     public func refreshAllData() {
-        fetchAllUsers() {
+        UserData.shared.fetchAllUsers() {
             
             self.fetchAllFriendships() {
                 
@@ -47,45 +65,11 @@ class FriendsViewModel: ObservableObject {
     }
     
     public func refreshData() {
-        fetchAllUsers(completion: {})
+        //fetchAllUsers(completion: {})
         fetchAllFriendships(completion: {})
     }
     
-    public func getUserFromUID(uid: String) -> User? {
-        for user in allUsers {
-            if user.uid == uid {
-                return user
-            }
-        }
-        return nil
-    }
-    
-    private func fetchAllUsers(completion: @escaping () -> Void) {
-        
-        FirebaseManager.shared.firestore.collection("users")
-            .getDocuments { documents, error in
-                // Error
-                if let error = error {
-                    self.errorMessage = "Failed to retrieve user documents: \(error.localizedDescription)"
-                    print("Failed to retrieve user documents: \(error.localizedDescription)")
-                    return
-                }
-                //Success
-                var tempAllUsers: [User] = [User]()
-                documents?.documents.forEach({ document in
-                    let data = document.data()
-                    let user = User(data: data)
-                    //if user.uid != FirebaseManager.shared.auth.currentUser?.uid {
-                        // if the user retrieved is not the current user on the phone
-                        tempAllUsers.append(.init(data: data))
-                        //print(data)
-                    //}
-                })
-                self.allUsers = tempAllUsers
-                print("Successfully retrieved all users")
-                completion()
-            }
-    }
+
     
     // has to be called after fetchAllFriendships
     public func fetchAllFriends() {
@@ -101,9 +85,9 @@ class FriendsViewModel: ObservableObject {
             if friendship.status == "accepted" {
                 var tempFriend: User
                 if friendship.userA != uid {
-                    tempFriend = self.getUserFromUID(uid: friendship.userA)!
+                    tempFriend = UserData.shared.getUserFromUID(uid: friendship.userA)!
                 } else { // watch these force unwraps
-                    tempFriend = self.getUserFromUID(uid: friendship.userB)!
+                    tempFriend = UserData.shared.getUserFromUID(uid: friendship.userB)!
                 }
                 tempFriends.append(tempFriend)
             }
@@ -137,7 +121,7 @@ class FriendsViewModel: ObservableObject {
                             if !self.friends.contains(where: {$0.uid == friendRequest.userB}) {
                                 print("a friend request was accepted")
                                 // add friend to the array
-                                self.friends.append(self.getUserFromUID(uid: friendRequest.userB)!)
+                                self.friends.append(UserData.shared.getUserFromUID(uid: friendRequest.userB)!)
                                 self.fetchAllFriendships() {
                                     //friendVM.fetchAllFriends()
                                 }
@@ -150,6 +134,7 @@ class FriendsViewModel: ObservableObject {
     
     public func fetchAllFriendships(completion: @escaping () -> Void) { // friendships of current user - WILL HAVE TO BE CHANGED - CALLS TOO MANY DOCS AT LARGE SCALE
         allFriendships = []
+        allFriendIDs = []
         
         guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
             print("User is not logged in")
@@ -174,11 +159,12 @@ class FriendsViewModel: ObservableObject {
                     let friendship = Friendship(data: data)
                     //if friendship.userA == FirebaseManager.shared.auth.currentUser?.uid || friendship.userB == FirebaseManager.shared.auth.currentUser?.uid {
                         // if the user retrieved is not the current user on the phone
+                    self.allFriendIDs.append(friendship.userB)
                     self.allFriendships.append(.init(data: data))
                     //}
                 })
                 //self.allFriendships = tempFriendships
-                print("Successfully rsetrieved all friendships")
+                print("Successfully retrieved all friendships Pt. B")
                 completion()
             }
         
@@ -200,11 +186,12 @@ class FriendsViewModel: ObservableObject {
                     let friendship = Friendship(data: data)
                     //if friendship.userA == FirebaseManager.shared.auth.currentUser?.uid || friendship.userB == FirebaseManager.shared.auth.currentUser?.uid {
                         // if the user retrieved is not the current user on the phone
+                    self.allFriendIDs.append(friendship.userA)
                     self.allFriendships.append(.init(data: data))
                     //}
                 })
                 //self.allFriendships = tempFriendships
-                print("Successfully retrieved all friendships")
+                print("Successfully retrieved all friendships Pt. A")
                 completion()
             }
     }
@@ -213,8 +200,8 @@ class FriendsViewModel: ObservableObject {
         // pending, accepted, "" - doesn't exist
         let documentID = userA + userB // friendship document ID
         
-        let userObjectA: User = self.getUserFromUID(uid: userA) ?? User(data: [:])
-        let userObjectB: User = self.getUserFromUID(uid: userB) ?? User(data: [:])
+        let userObjectA: User = UserData.shared.getUserFromUID(uid: userA) ?? User(data: [:])
+        let userObjectB: User = UserData.shared.getUserFromUID(uid: userB) ?? User(data: [:])
 
         
         FirebaseManager.shared.firestore.collection("friendships").document(documentID)
@@ -291,4 +278,75 @@ class FriendsViewModel: ObservableObject {
         }
         return status // friendship status
     }
+    
+    var friendLeaderboardListeners: [ListenerRegistration?] = []
+    
+    public func getAllFriendPoopTotals() {
+                
+        print("FRIENDID: \(allFriendIDs.count)")
+        let doubleCountVal = Double(allFriendIDs.count)
+        var setsOf10: Double = (doubleCountVal)/10.0
+        setsOf10.round(.up) // should be ceiling
+        let setsOf10Int = Int(setsOf10)
+        // setsOf10 is the number of snapshot listeners to be made - in order to use the 'in' query type
+        
+        for i in 0..<setsOf10Int { // number of spanshot listeners
+            // START math to calculate end of set of 10 indexes
+            var endOfJLoop = 0;
+            
+            if allFriendIDs.count > ((10*i)+10) {
+                endOfJLoop = ((10*i)+10)
+            } else {
+                endOfJLoop = (10*i) + (allFriendIDs.count%10)
+            }
+            // END math
+            // get array of 10 docIDs/friendIDs
+            var setOf10FriendIDs = [String]()
+            for j in (10*i) ..< endOfJLoop {
+                setOf10FriendIDs.append(allFriendIDs[j])
+            }
+            // check for correct batch
+            if setOf10FriendIDs.count > 10 {
+                print("Something went wrong getting batch of 10 friend IDs for snapshot listener")
+                return
+            }
+            // create snapshot listener
+            friendLeaderboardListeners.append(
+                FirebaseManager.shared.firestore.collection("poops").whereField(FieldPath.documentID(), in: setOf10FriendIDs)
+                .addSnapshotListener { snapshot, error in
+                    print("MADE IT INSIDE FIREBASE CALL")
+                    if let error = error {
+                        print("Error in listening to friend poop documents: \(error.localizedDescription)")
+                        return
+                    }
+                    
+                    snapshot?.documentChanges.forEach({ change in
+                        // friend has added a new poop, need to update leaderboard friends array
+                        if change.type == .modified || change.type == .added {
+                            print("got changes")
+                            let data = change.document.data()
+                            let poopDoc: PoopDocument = PoopDocument(data: data)
+                            self.friendStatsList[change.document.documentID] = poopDoc.totalPoops
+                            
+                            
+                        }
+                        
+                    })
+                        
+                })
+
+            
+            
+        }
+        
+        print("LENGTH OF DICT: \(friendStatsList.count)")
+    }
+    
+    public func removeFriendLeaderboardListeners() {
+        for i in 0..<friendLeaderboardListeners.count {
+            friendLeaderboardListeners[i]?.remove()
+        }
+    }
+
+
 }

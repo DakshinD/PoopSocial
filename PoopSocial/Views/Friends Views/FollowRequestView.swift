@@ -13,6 +13,10 @@ struct FollowRequestView: View {
     @Environment(\.presentationMode) var presentationMode
     
     @EnvironmentObject var friendVM: FriendsViewModel
+    
+    init() {
+        
+    }
 
     
     var body: some View {
@@ -26,7 +30,7 @@ struct FollowRequestView: View {
                     
                     List {
                         ForEach(friendVM.allFriendRequests) { request in //id is the users uid
-                            FollowRequestRow(user: friendVM.getUserFromUID(uid: request.userA)!) // fix force unwrap
+                            FollowRequestRow(user: UserData.shared.getUserFromUID(uid: request.userA)!) // fix force unwrap
                         }
                     }
                     .listStyle(InsetGroupedListStyle())

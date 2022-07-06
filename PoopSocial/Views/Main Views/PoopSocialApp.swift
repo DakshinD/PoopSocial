@@ -13,6 +13,8 @@ struct PoopSocialApp: App {
     
     @StateObject private var friendVM: FriendsViewModel = FriendsViewModel()
     @StateObject private var poopVM: PoopViewModel = PoopViewModel()
+    @StateObject private var leaderboardVM: LeaderboardViewModel = LeaderboardViewModel()
+
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
@@ -23,6 +25,7 @@ struct PoopSocialApp: App {
             ContentView()
                 .environmentObject(friendVM)
                 .environmentObject(poopVM)
+                .environmentObject(leaderboardVM)
             
         }
     }

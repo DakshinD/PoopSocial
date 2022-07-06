@@ -43,12 +43,15 @@ class PoopViewModel: ObservableObject {
                 if let data = data {
                     
                     do {
+                        
+                        
                         let jsonData = try JSONSerialization.data(withJSONObject: data, options: [])
-                        let poopData = try JSONDecoder().decode([String:[Poop]].self, from: jsonData)
-                        let poopsArray = poopData["poops"]
+                        
+                        let poopData = try JSONDecoder().decode(PoopDocument.self, from: jsonData)
+                        let poopsArray = poopData.poopArray
                         self.allPoops = poopsArray ?? []
-                        self.totalNumberOfPoops = self.allPoops.count // set correct number of poops for upload validations type
-                        print("PoopsArray is: \(poopsArray)")
+                        self.totalNumberOfPoops = poopData.totalPoops//self.allPoops.count // set correct number of poops for upload validations type
+                        //print("PoopsArray is: \(poopsArray)")
                         print("Successfully retrieved poop document")
                         
                         
@@ -87,7 +90,8 @@ class PoopViewModel: ObservableObject {
         if self.totalNumberOfPoops == 0 { // no document - need to setData
             
             FirebaseManager.shared.firestore.collection("poops").document(uid).setData([
-                "poops": FieldValue.arrayUnion([newPoopJSON])
+                "poops": FieldValue.arrayUnion([newPoopJSON]),
+                "total_poops": totalNumberOfPoops+1
             ]) { error in
                 if let error = error {
                     //self.errorMessage = "Failed to upload poop document: \(error.localizedDescription)"
@@ -102,7 +106,8 @@ class PoopViewModel: ObservableObject {
         } else { // already document, need to updateData
             
             FirebaseManager.shared.firestore.collection("poops").document(uid).updateData([
-                "poops": FieldValue.arrayUnion([newPoopJSON])
+                "poops": FieldValue.arrayUnion([newPoopJSON]),
+                "total_poops": totalNumberOfPoops+1
             ]) { error in
                 if let error = error {
                     //self.errorMessage = "Failed to upload poop document: \(error.localizedDescription)"

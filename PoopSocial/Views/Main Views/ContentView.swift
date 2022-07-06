@@ -13,6 +13,7 @@ struct ContentView: View {
     
     @EnvironmentObject var friendVM: FriendsViewModel
     @EnvironmentObject var poopVM: PoopViewModel
+    @EnvironmentObject var leaderboardVM: LeaderboardViewModel
     
     @ObservedObject private var user: UserData = UserData.shared
     
@@ -36,11 +37,13 @@ struct ContentView: View {
                 }
                 .environmentObject(friendVM)
             
-            Text("Leaderboard")
+            LeaderboardView()
                 .tabItem {
                     Image(systemName: "chart.bar.xaxis")
-                    Text("Statistics")
+                    Text("Leaderboard")
                 }
+                .environmentObject(friendVM)
+                .environmentObject(leaderboardVM)
             
             Text("Settings")
                 .tabItem {
@@ -52,7 +55,6 @@ struct ContentView: View {
         .accentColor(Color.orange)
         .fullScreenCover(isPresented: $user.isNotLoggedIn) {
             LoginView(didCompleteLoginProcess: {
-                //AppDelegate.updateFirestorePushTokenIfNeeded(<#T##self: AppDelegate##AppDelegate#>) do we need to do this after user logs in?
                 appDelegate.updateFirestorePushTokenIfNeeded()
                 // need to init poop and friend view models again
                 user.isNotLoggedIn = false

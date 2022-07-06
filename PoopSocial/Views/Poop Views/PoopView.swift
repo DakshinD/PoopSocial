@@ -67,7 +67,7 @@ struct PoopView: View {
                             }) {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 15)
-                                        .fill(LinearGradient(colors: [.red, .orange, .yellow], startPoint: .topLeading, endPoint: .bottomTrailing))
+                                        .fill(Color.normalGradient)
                                     ZStack(alignment: .bottomTrailing) {
                                         Text("💩")
                                             .font(.system(size: 60))

@@ -15,13 +15,9 @@ class Poop: Codable {
     
     private var timestampDate: Date
     
-   /* if let asDouble = dictionary["timestamp"] as? Double {
-        self.timestampDate = Date(timeIntervalSince1970: asDouble)
-    } else {
-        self.timestampDate = Date()
-    }*/
-    
     var timestamp: Timestamp { Timestamp(date: timestampDate) }
+    
+    
     //var duration: TimeInterval
     
     init(data: [String : Any]) {
@@ -31,5 +27,33 @@ class Poop: Codable {
     init(timeTakenAt: Date) {
         self.timestampDate = timeTakenAt
     }
+
+    
+}
+
+class PoopDocument: Codable {
+    
+    var poopArray: [Poop]
+    var totalPoops: Int
+    
+    init(data: [String:Any]) {
+        
+        self.poopArray = data["poops"] as? [Poop] ?? [Poop]()
+        self.totalPoops = data["total_poops"] as? Int ?? 0
+    }
+    
+    init(arr: [Poop], ct: Int) {
+        self.poopArray = arr
+        self.totalPoops = ct
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case poopArray = "poops"
+        case totalPoops = "total_poops"
+    }
+
+}
+
+extension PoopDocument {
     
 }
