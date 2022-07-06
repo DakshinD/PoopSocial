@@ -14,6 +14,8 @@ struct FriendLeaderboardView: View {
     
     @EnvironmentObject var leaderboardVM: LeaderboardViewModel
     @EnvironmentObject var friendVM: FriendsViewModel
+    @EnvironmentObject var poopVM: PoopViewModel
+    
 
     
     var body: some View {
@@ -36,11 +38,18 @@ struct FriendLeaderboardView: View {
                 .listRowBackground(Color.dimGradient)
                 
                 
-                ForEach(friendVM.friendStatsList.sorted{ return $0.value > $1.value }, id: \.key) { uid, rank in
-                    let user: User = UserData.shared.getUserFromUID(uid: uid) ?? User(data: [:])
+                ForEach(Array(friendVM.friendStatsList.sorted{ return $0.value > $1.value }.enumerated()), id: \.1.key) { index, userRankPair in
+                    let user: User = UserData.shared.getUserFromUID(uid: userRankPair.key) ?? User(data: [:])
                     HStack {
                         
-                        WebImage(url: URL(string: user.profileImageUrl ))
+                        Text("\(index+1)")
+                            .font(.title3)
+                            .bold()
+                        
+                        Divider()
+                            .padding(5)
+                        
+                        WebImage(url: URL(string: user.profileImageUrl))
                             .resizable()
                             .scaledToFill()
                             .frame(width: 35, height: 35)
@@ -51,14 +60,14 @@ struct FriendLeaderboardView: View {
                             )
                             .shadow(radius: 3)
                         
-                        Text(user.username )
+                        Text(user.username)
                         
                         Spacer()
                         
-                        Text("\(rank) 💩")
+                        Text("\(userRankPair.value) 💩")
                         
                     }
-                    .listRowBackground((uid == UserData.shared.uid) ? Color.orange.opacity(0.1) : Color.secondary)
+                    .listRowBackground((userRankPair.key == UserData.shared.uid) ? Color.orange.opacity(0.1) : Color.secondary)
                 }
                 .frame(height: 60)
                 
@@ -71,9 +80,7 @@ struct FriendLeaderboardView: View {
         .listRowBackground(Color.secondary)
         .listStyle(InsetGroupedListStyle())
         .environment(\.defaultMinListRowHeight, 20)
-        .onAppear {
-            friendVM.getAllFriendPoopTotals()
-        }
+
 
         
     }

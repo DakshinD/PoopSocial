@@ -45,7 +45,7 @@ struct ContentView: View {
                 .environmentObject(friendVM)
                 .environmentObject(leaderboardVM)
             
-            Text("Settings")
+            SettingsView()
                 .tabItem {
                     Image(systemName: "gear")
                     Text("Settings")

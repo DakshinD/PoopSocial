@@ -59,6 +59,9 @@ struct LeaderboardView: View {
                 
             }
             .navigationTitle("Leaderboard")
+            .onAppear {
+                friendVM.getAllFriendPoopTotals()
+            }
             .onDisappear {
                 friendVM.removeFriendLeaderboardListeners()
             }

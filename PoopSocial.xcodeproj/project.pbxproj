@@ -47,6 +47,8 @@
 		BEB705E1286785B3008A6F24 /* FollowRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705E0286785B3008A6F24 /* FollowRequestView.swift */; };
 		BEB705E328678F70008A6F24 /* FollowRequestRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705E228678F70008A6F24 /* FollowRequestRow.swift */; };
 		BEB705EB2868E4B5008A6F24 /* FriendsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705EA2868E4B5008A6F24 /* FriendsViewModel.swift */; };
+		BEBA70512875F67500CEDCBD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA70502875F67500CEDCBD /* SettingsView.swift */; };
+		BEBA70532876244A00CEDCBD /* OtherProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA70522876244A00CEDCBD /* OtherProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +108,8 @@
 		BEB705E0286785B3008A6F24 /* FollowRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowRequestView.swift; sourceTree = "<group>"; };
 		BEB705E228678F70008A6F24 /* FollowRequestRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowRequestRow.swift; sourceTree = "<group>"; };
 		BEB705EA2868E4B5008A6F24 /* FriendsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewModel.swift; sourceTree = "<group>"; };
+		BEBA70502875F67500CEDCBD /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		BEBA70522876244A00CEDCBD /* OtherProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +149,7 @@
 				BE61457C286CBD6E00656824 /* PoopView.swift */,
 				BE61457E286CC42500656824 /* PoopViewModel.swift */,
 				BE614584286F5B3600656824 /* ProfileView.swift */,
+				BEBA70522876244A00CEDCBD /* OtherProfileView.swift */,
 			);
 			path = "Poop Views";
 			sourceTree = "<group>";
@@ -283,6 +288,7 @@
 				BE61458628737EB500656824 /* Leaderboard Views */,
 				BEA6402C286A0F8B00E86612 /* Login Views */,
 				BEB705D428661BBC008A6F24 /* Friends Views */,
+				BEBA704F2875F65F00CEDCBD /* Setting Views */,
 				BEB705BD2864EA13008A6F24 /* MainMessagesView */,
 				BEA6402D286A0FA300E86612 /* Utility Views */,
 			);
@@ -326,6 +332,14 @@
 				BEB705D828661ED2008A6F24 /* UserData.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		BEBA704F2875F65F00CEDCBD /* Setting Views */ = {
+			isa = PBXGroup;
+			children = (
+				BEBA70502875F67500CEDCBD /* SettingsView.swift */,
+			);
+			path = "Setting Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -509,7 +523,9 @@
 				BEB705D928661ED2008A6F24 /* UserData.swift in Sources */,
 				BEB705DB28662050008A6F24 /* AddFriendView.swift in Sources */,
 				BEB7057A2864B97A008A6F24 /* PoopSocialApp.swift in Sources */,
+				BEBA70532876244A00CEDCBD /* OtherProfileView.swift in Sources */,
 				BEB705A42864C470008A6F24 /* ContentView.swift in Sources */,
+				BEBA70512875F67500CEDCBD /* SettingsView.swift in Sources */,
 				BE61457F286CC42500656824 /* PoopViewModel.swift in Sources */,
 				BEB705D3286615CF008A6F24 /* ColorManager.swift in Sources */,
 				BE614585286F5B3600656824 /* ProfileView.swift in Sources */,

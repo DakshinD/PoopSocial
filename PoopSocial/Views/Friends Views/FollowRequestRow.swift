@@ -38,9 +38,9 @@ struct FollowRequestRow: View {
             }) {
                 ZStack {
                     Circle()
-                        .strokeBorder(.black, lineWidth: 2)
+                        .fill(LinearGradient(colors: [Color.init(red: 11/255, green: 230/255, blue: 37/255), Color.init(red: 33/255, green: 194/255, blue: 52/255)], startPoint: .topLeading, endPoint: .bottomTrailing))
                         .frame(width: 30, height: 30)
-                        .background(Circle().fill(Color.green.opacity(0.8)))
+
             
                     Image(systemName: "checkmark")
                         .foregroundColor(Color.text)
@@ -53,9 +53,9 @@ struct FollowRequestRow: View {
             }) {
                 ZStack {
                     Circle()
-                        .strokeBorder(.black, lineWidth: 2)
+                        .fill(LinearGradient(colors: [Color.init(red: 209/255, green: 21/255, blue: 30/255), Color.init(red: 186/255, green: 28/255, blue: 36/255)], startPoint: .topLeading, endPoint: .bottomTrailing))
                         .frame(width: 30, height: 30)
-                        .background(Circle().fill(Color.red.opacity(0.8)))
+
             
                     Image(systemName: "xmark")
                         .foregroundColor(Color.text)

@@ -13,7 +13,7 @@ class FriendsViewModel: ObservableObject {
     
     
     
-    @Published var allUsers: [User] = [User]()
+    //@Published var allUsers: [User] = [User]() - use UserData one
     
     @Published var friends: [User] = [User]()
     
@@ -224,6 +224,52 @@ class FriendsViewModel: ObservableObject {
             }
     }
     
+    public func deleteFriendship(userA: String, userB: String) {
+        // get the id of friend
+        var idOfFriend: String = ""
+        if userA == UserData.shared.uid { idOfFriend = userB }
+        else if userB == UserData.shared.uid { idOfFriend = userA }
+        // find docId
+        var docId: String = ""
+        var docIdx: Int = 0
+        for i in 0..<self.allFriendships.count {
+            let friendship = allFriendships[i]
+            if friendship.userA == userA && friendship.userB == userB {
+                docId = userA + userB
+                docIdx = i
+                break
+            }
+            else if friendship.userB == userA && friendship.userA == userB {
+                docId = userB + userA
+                docIdx = i
+                break
+            }
+        }
+        // found doc ID
+        // remove doc
+        FirebaseManager.shared.firestore.collection("friendships").document(docId).delete { error in
+            if let error = error {
+                print("Error in deleting friendship document: \(error.localizedDescription)")
+                return
+            }
+            // change the friendships list
+            self.allFriendships.remove(at: docIdx)
+            // change friends id list for leaderboard query
+            self.allFriendIDs.removeAll { id in
+                return id == idOfFriend
+            }
+            // change friends array
+            for i in 0..<self.friends.count {
+                if self.friends[i].uid == idOfFriend {
+                    self.friends.remove(at: i)
+                    break
+                }
+            }
+            print("Successfully removed friendship document between \(userA) and \(userB)")
+        }
+        
+    }
+    
     // have to refresh allFriendships to use this, if changes to status
     public func checkCurrentFriendshipStatus(userA: String, userB: String) -> String {
         
@@ -282,9 +328,10 @@ class FriendsViewModel: ObservableObject {
     var friendLeaderboardListeners: [ListenerRegistration?] = []
     
     public func getAllFriendPoopTotals() {
-                
-        print("FRIENDID: \(allFriendIDs.count)")
-        let doubleCountVal = Double(allFriendIDs.count)
+        var allFriendAndUserIDs = allFriendIDs
+        allFriendAndUserIDs.append(UserData.shared.uid)
+        print("FRIENDID: \(allFriendAndUserIDs.count)")
+        let doubleCountVal = Double(allFriendAndUserIDs.count)
         var setsOf10: Double = (doubleCountVal)/10.0
         setsOf10.round(.up) // should be ceiling
         let setsOf10Int = Int(setsOf10)
@@ -294,16 +341,16 @@ class FriendsViewModel: ObservableObject {
             // START math to calculate end of set of 10 indexes
             var endOfJLoop = 0;
             
-            if allFriendIDs.count > ((10*i)+10) {
+            if allFriendAndUserIDs.count > ((10*i)+10) {
                 endOfJLoop = ((10*i)+10)
             } else {
-                endOfJLoop = (10*i) + (allFriendIDs.count%10)
+                endOfJLoop = (10*i) + (allFriendAndUserIDs.count%10)
             }
             // END math
             // get array of 10 docIDs/friendIDs
             var setOf10FriendIDs = [String]()
             for j in (10*i) ..< endOfJLoop {
-                setOf10FriendIDs.append(allFriendIDs[j])
+                setOf10FriendIDs.append(allFriendAndUserIDs[j])
             }
             // check for correct batch
             if setOf10FriendIDs.count > 10 {

@@ -47,25 +47,23 @@ struct AddFriendRowView: View {
                 print("pressed")
                 friendVM.addFriendship(userA: FirebaseManager.shared.auth.currentUser?.uid ?? "", userB: user.uid) {
                     print("completion handler run")
-                    friendVM.fetchAllFriendships {
+                    friendVM.fetchAllFriendships { // handle - only fetch the updated friendship?
                         getFriendshipStatus()
                     }
                 }
 
             }) {
-                
-                ZStack {
-                    Capsule()
-                        .strokeBorder(.black, lineWidth: 2)
-                        .frame(width: 100, height: 35)
-                        .background(Capsule().fill(Color.accent.opacity((friendRequestStatus == "Pending" || friendRequestStatus == "Following") ? 0.4 : 0.7)))
-                        
                     
-                    Text(friendRequestStatus)
-                        .foregroundColor(Color.text)
-                }
+                Text(friendRequestStatus)
+                    .font(.system(size: 13))
+                    .bold()
+                    .foregroundColor(Color.text)
+
             }
+            .buttonStyle(CustomGradientButton(disabled: (friendRequestStatus == "Pending" || friendRequestStatus == "Following")))
             .disabled((friendRequestStatus == "Pending" || friendRequestStatus == "Following"))
+            .frame(width: 100, height: 35)
+            .cornerRadius(50)
         }
         .padding()
         .onAppear {

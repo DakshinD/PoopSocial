@@ -26,18 +26,41 @@ struct CustomButton: ButtonStyle {
 
 struct CustomGradientButton: ButtonStyle {
     
+    var disabled: Bool = false
+    
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(minWidth: 0, maxWidth: .infinity)
             .padding()
             .foregroundColor(Color.text)
             .background(configuration.isPressed ? LinearGradient(colors: [.red, .orange, .yellow], startPoint: .topLeading, endPoint: .bottomTrailing) : LinearGradient(colors: [.red.opacity(0.6), .orange.opacity(0.6), .yellow.opacity(0.6)], startPoint: .topLeading, endPoint: .bottomTrailing))
+            .brightness(disabled ? -0.2 : 0)
             .cornerRadius(15)
             .shadow(radius: 5)
             .scaleEffect(configuration.isPressed ? 0.9:1.0)
     }
     
 }
+
+struct CustomSolidButton: ButtonStyle {
+    
+    var disabled: Bool = false
+    var color: Color
+    
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .frame(minWidth: 0, maxWidth: .infinity)
+            .padding()
+            .foregroundColor(Color.text)
+            .background(configuration.isPressed ? color : color.opacity(0.7))
+            .brightness(disabled ? -0.2 : 0)
+            .cornerRadius(15)
+            .shadow(radius: 5)
+            .scaleEffect(configuration.isPressed ? 0.9:1.0)
+    }
+    
+}
+
 
 //NOTE: - Custom Time-Ago Date Format
 extension Date {

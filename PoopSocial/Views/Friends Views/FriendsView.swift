@@ -31,26 +31,28 @@ struct FriendsView: View {
                     List {
                         
                         ForEach(friendVM.friends, id: \.uid) { friend in
-                            HStack {
-                                WebImage(url: URL(string: friend.profileImageUrl ?? ""))
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 50, height: 50)
-                                    .clipped()
-                                    .cornerRadius(50)
-                                    .overlay(RoundedRectangle(cornerRadius: 50)
-                                                .stroke(Color(.label), lineWidth: 1)
-                                    )
-                                    .shadow(radius: 5)
-                                
-                                Text(friend.username ?? "")
-                                    .foregroundColor(Color.text)
-                                    .font(.body)
-                                    .padding(.horizontal)
-                                
-                                Spacer()
+                            NavigationLink(destination: OtherProfileView(user: friend)) {
+                                HStack {
+                                    WebImage(url: URL(string: friend.profileImageUrl ?? ""))
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 50, height: 50)
+                                        .clipped()
+                                        .cornerRadius(50)
+                                        .overlay(RoundedRectangle(cornerRadius: 50)
+                                                    .stroke(Color(.label), lineWidth: 1)
+                                        )
+                                        .shadow(radius: 5)
+                                    
+                                    Text(friend.username ?? "")
+                                        .foregroundColor(Color.text)
+                                        .font(.body)
+                                        .padding(.horizontal)
+                                    
+                                    Spacer()
+                                }
+                                .padding()
                             }
-                            .padding()
                         }
                         
                     }
@@ -93,11 +95,45 @@ struct FriendsView: View {
             }
             .onAppear {
                 friendVM.fetchNewFriends()
+                fetchFriendRequests()
             }
+
             
         }
        
         
+    }
+        
+    func fetchFriendRequests() {
+        
+        FirebaseManager.shared.firestore
+            .collection("friendships")
+            .whereField("userB", isEqualTo: FirebaseManager.shared.auth.currentUser?.uid ?? "")
+            .whereField("status", isEqualTo: "pending")
+            .addSnapshotListener { documents, error in
+                
+                if let error = error {
+                    print("Error fetching friend requests: \(error.localizedDescription)")
+                    return
+                }
+                
+                documents?.documentChanges.forEach({ change in
+                    if change.type == .added  { // new friend request was made
+                        let data = change.document.data()
+                        let friendRequest = Friendship(data: data)
+                        print("got friend req")
+                        for request in friendVM.allFriendRequests {
+                            if friendRequest.userA == request.userA && friendRequest.userB == request.userB && friendRequest.status == request.status {
+                                return
+                            }
+                        }
+                        friendVM.allFriendRequests.append(friendRequest)
+                        friendVM.friendRequestCount = friendVM.allFriendRequests.count
+                        friendVM.fetchAllFriendships(completion: {})
+                        // i need to refresh the statuses in the add friends page
+                    }
+                })
+            }
     }
     
 }
