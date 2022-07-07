@@ -16,6 +16,7 @@ struct PoopView: View {
     @ObservedObject private var user : UserData = UserData.shared
     
     @State private var showProfileView: Bool = false
+    @State private var showAddPoopModal: Bool = false
     
     var body: some View {
         
@@ -61,7 +62,8 @@ struct PoopView: View {
                             Button(action: {
                                 print("pressed poop button")
                                 withAnimation {
-                                    addNewPoop()
+                                    self.showAddPoopModal.toggle()
+                                    //addNewPoop()
                                 }
                                 
                             }) {
@@ -84,6 +86,9 @@ struct PoopView: View {
                                 .frame(height: 100)
                                 .padding(.vertical)
                                 .padding(.trailing)
+                            }
+                            .sheet(isPresented: $showAddPoopModal) {
+                                AddPoopView()
                             }
                             
                             
@@ -161,12 +166,7 @@ struct PoopView: View {
         }
     }
     
-    func addNewPoop() {
-        
-        let newPoop: Poop = Poop(timeTakenAt: Date.now)
-        poopVM.addNewPoop(newPoop: newPoop)
-        
-    }
+
 }
 
 struct PoopView_Previews: PreviewProvider {

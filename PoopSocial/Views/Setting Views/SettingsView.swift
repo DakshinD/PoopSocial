@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SettingsView: View {
     
+    @StateObject var userData = UserData.shared
+    
     
     var body: some View {
         
@@ -22,7 +24,21 @@ struct SettingsView: View {
                 List {
                     
                     // turn notifications on or off --> setting in firebase user document --> check in cloud function
-                    
+                    Section(header: Text("Notifications")) {
+
+                            
+                        Toggle(isOn: $userData.recieveNotifications) {
+                            HStack {
+                                Image(systemName: "bell.fill")
+                                    .foregroundColor(Color.accent)
+                                Text("Recieve Notifications")
+                            }
+                        }
+                        .onChange(of: userData.recieveNotifications) { newValue in
+                            changeNotificationSetting(val: newValue)
+                        }
+                        
+                    }
                     
                     // Appearance - dark mode
                     Section(header: Text("Appearance")) {
@@ -44,6 +60,21 @@ struct SettingsView: View {
             .navigationTitle("Settings")
             
         }
+        
+    }
+    
+    public func changeNotificationSetting(val: Bool) {
+        print("Changed notification setting toggle")
+        FirebaseManager.shared.firestore.collection("users").document(UserData.shared.uid)
+            .updateData([
+                "recieveNotifications": val
+            ]) { error in
+                if let error = error {
+                    print("Failed to update notification settings in user document: \(error.localizedDescription)")
+                    return
+                }
+                print("Successfully updated notification settings")
+            }
         
     }
     

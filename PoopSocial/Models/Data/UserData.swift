@@ -23,6 +23,8 @@ class UserData: ObservableObject {
     
     @Published var fcmToken: String = ""
     
+    @Published var recieveNotifications: Bool = true
+    
     @Published var isNotLoggedIn: Bool = false
     
     @Published var allUsers: [User] = [User]()

@@ -254,7 +254,7 @@ class FriendsViewModel: ObservableObject {
             }
             // change the friendships list
             self.allFriendships.remove(at: docIdx)
-            // change friends id list for leaderboard query
+            // change friends id listx for leaderboard query
             self.allFriendIDs.removeAll { id in
                 return id == idOfFriend
             }

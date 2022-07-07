@@ -49,6 +49,7 @@
 		BEB705EB2868E4B5008A6F24 /* FriendsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705EA2868E4B5008A6F24 /* FriendsViewModel.swift */; };
 		BEBA70512875F67500CEDCBD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA70502875F67500CEDCBD /* SettingsView.swift */; };
 		BEBA70532876244A00CEDCBD /* OtherProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA70522876244A00CEDCBD /* OtherProfileView.swift */; };
+		BEBA705528773D7C00CEDCBD /* AddPoopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA705428773D7C00CEDCBD /* AddPoopView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +111,7 @@
 		BEB705EA2868E4B5008A6F24 /* FriendsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewModel.swift; sourceTree = "<group>"; };
 		BEBA70502875F67500CEDCBD /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		BEBA70522876244A00CEDCBD /* OtherProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherProfileView.swift; sourceTree = "<group>"; };
+		BEBA705428773D7C00CEDCBD /* AddPoopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPoopView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				BE61457C286CBD6E00656824 /* PoopView.swift */,
+				BEBA705428773D7C00CEDCBD /* AddPoopView.swift */,
 				BE61457E286CC42500656824 /* PoopViewModel.swift */,
 				BE614584286F5B3600656824 /* ProfileView.swift */,
 				BEBA70522876244A00CEDCBD /* OtherProfileView.swift */,
@@ -535,6 +538,7 @@
 				BEB705EB2868E4B5008A6F24 /* FriendsViewModel.swift in Sources */,
 				BEB705BF2864EA2C008A6F24 /* MainMessagesView.swift in Sources */,
 				BEB705C8286514D0008A6F24 /* User.swift in Sources */,
+				BEBA705528773D7C00CEDCBD /* AddPoopView.swift in Sources */,
 				BEB705DD286625F3008A6F24 /* AddFriendRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

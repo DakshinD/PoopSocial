@@ -28,9 +28,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         options: authOptions) { _, _ in }
         // 3
         application.registerForRemoteNotifications()
-        
-        //updateFirestorePushTokenIfNeeded()
-          
+                  
         // 4 - Sets AppDelegate as the delegate for Messaging
         Messaging.messaging().delegate = self
         

@@ -8,6 +8,7 @@
 import UIKit
 import SwiftUI
 import FirebaseFirestore
+import Firebase
 
 class Poop: Codable {
     
@@ -17,15 +18,19 @@ class Poop: Codable {
     
     var timestamp: Timestamp { Timestamp(date: timestampDate) }
     
+    var message: String
+    
     
     //var duration: TimeInterval
     
     init(data: [String : Any]) {
         self.timestampDate = data["timestampDate"] as? Date ?? Date()
+        self.message = data["message"] as? String ?? ""
     }
     
-    init(timeTakenAt: Date) {
+    init(timeTakenAt: Date, message: String) {
         self.timestampDate = timeTakenAt
+        self.message = message
     }
 
     

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 
 //NOTE: - Custom Button Style
@@ -123,5 +124,12 @@ struct GradientTextFieldBackground: TextFieldStyle {
             .padding(.leading)
             .foregroundColor(.gray)
         }
+    }
+}
+
+// NOTE: - To dismiss keyboard
+extension UIApplication {
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
