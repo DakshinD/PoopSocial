@@ -46,11 +46,12 @@ struct PoopView: View {
                                             .foregroundColor(Color.text)
                                             .font(.headline)
                                     }
-                                    .padding(.leading, 7)
+                                    .padding(.leading, 10)
                                     
                                     Spacer()
                                     
                                     Text("\(poopVM.totalNumberOfPoops)")
+                                        .font(.title3)
                                         .bold()
                                         .padding()
                                     
@@ -112,27 +113,32 @@ struct PoopView: View {
                         List(poopVM.allPoops.sorted(by: { poop1, poop2 in
                             return poop1.timestamp.dateValue() > poop2.timestamp.dateValue()
                         }), id: \.timestamp) { poop in
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    Text("Poop")
-                                        .foregroundColor(Color.text)
-                                        .font(.body)
-                                        .bold()
-                                        .padding(.vertical, 5)
+                            NavigationLink(destination: PoopDetailView(poop: poop)) {
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        Text("Poop")
+                                            .foregroundColor(Color.text)
+                                            .font(.body)
+                                            .bold()
+                                            .padding(.vertical, 5)
+                                        
+                                        Text(poop.timestamp.dateValue(), style: .date).font(.caption)
+                                        + Text(" @ ").font(.caption)
+                                        + Text(poop.timestamp.dateValue(), style: .time).font(.caption)
+                                    }
                                     
-                                    Text(poop.timestamp.dateValue(), style: .date).font(.caption)
-                                    + Text(" @ ").font(.caption)
-                                    + Text(poop.timestamp.dateValue(), style: .time).font(.caption)
+                                    
+                                    
+                                    Spacer()
+                                    
+                                    Text("\(poop.timestamp.dateValue().timeAgo()) ago")
+                                        .foregroundColor(Color.gray)
+                                        .font(.footnote)
+                                        .padding()
+                                        
                                 }
-                                
-                                
-                                Spacer()
-                                
-                                Text("\(poop.timestamp.dateValue().timeAgo()) ago")
-                                    .foregroundColor(Color.gray)
-                                    .font(.footnote)
-                                    
                             }
+                            
                         }
                         
                     }

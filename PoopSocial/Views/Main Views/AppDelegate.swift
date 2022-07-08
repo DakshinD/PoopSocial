@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseMessaging
+import UserNotifications
 
 
 class AppDelegate: NSObject, UIApplicationDelegate {
@@ -23,13 +24,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         // 1
         UNUserNotificationCenter.current().delegate = self
         // 2
-        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-        UNUserNotificationCenter.current().requestAuthorization(
-        options: authOptions) { _, _ in }
-        // 3
-        application.registerForRemoteNotifications()
-                  
-        // 4 - Sets AppDelegate as the delegate for Messaging
+        registerForPushNotifications()
+        // 3 - Sets AppDelegate as the delegate for Messaging
         Messaging.messaging().delegate = self
         
         updateFirestorePushTokenIfNeeded()
@@ -59,6 +55,29 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             let userRef = FirebaseManager.shared.firestore.collection("users").document(uid)
             userRef.setData(["FCMToken": token], merge: true)
         }
+    }
+    
+    // register for notifications
+    func registerForPushNotifications() {
+        UNUserNotificationCenter.current()
+          .requestAuthorization(
+            options: [.alert, .sound, .badge]) { [weak self] granted, _ in
+            print("Permission granted: \(granted)")
+            guard granted else { return }
+            self?.getNotificationSettings()
+          }
+    }
+    
+    // get current user permissions
+    func getNotificationSettings() {
+      UNUserNotificationCenter.current().getNotificationSettings { settings in
+        print("Notification settings: \(settings)")
+          
+          guard settings.authorizationStatus == .authorized else { return }
+          DispatchQueue.main.async {
+            UIApplication.shared.registerForRemoteNotifications()
+          }
+      }
     }
     
 }

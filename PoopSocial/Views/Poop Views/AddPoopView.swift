@@ -39,7 +39,7 @@ struct AddPoopView: View {
                     List {
                         
                         Section {
-                            Text("Type in a custom message to notify your friends with")
+                            Text("Type in a custom message about your poop to notify your friends with")
                                 .font(.headline)
                                 .multilineTextAlignment(.center)
                                 .padding()
@@ -65,6 +65,7 @@ struct AddPoopView: View {
                                     .onChange(of: message) { newValue in
                                         proxy.scrollTo(999, anchor: .bottom)
                                     }
+                                    .padding()
                                     
                                 
                                 Text(message).opacity(0).padding(.all, 8)
@@ -110,6 +111,9 @@ struct AddPoopView: View {
             .navigationTitle("Add Poop")
             .onTapGesture {
                 UIApplication.shared.endEditing()
+            }
+            .onAppear {
+                
             }
             
         }

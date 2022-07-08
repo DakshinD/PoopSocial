@@ -50,6 +50,7 @@
 		BEBA70512875F67500CEDCBD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA70502875F67500CEDCBD /* SettingsView.swift */; };
 		BEBA70532876244A00CEDCBD /* OtherProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA70522876244A00CEDCBD /* OtherProfileView.swift */; };
 		BEBA705528773D7C00CEDCBD /* AddPoopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA705428773D7C00CEDCBD /* AddPoopView.swift */; };
+		BEE944C4287772A500BA1ACB /* PoopDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE944C3287772A500BA1ACB /* PoopDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,7 @@
 		BEBA70502875F67500CEDCBD /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		BEBA70522876244A00CEDCBD /* OtherProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherProfileView.swift; sourceTree = "<group>"; };
 		BEBA705428773D7C00CEDCBD /* AddPoopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPoopView.swift; sourceTree = "<group>"; };
+		BEE944C3287772A500BA1ACB /* PoopDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				BE61457C286CBD6E00656824 /* PoopView.swift */,
+				BEE944C3287772A500BA1ACB /* PoopDetailView.swift */,
 				BEBA705428773D7C00CEDCBD /* AddPoopView.swift */,
 				BE61457E286CC42500656824 /* PoopViewModel.swift */,
 				BE614584286F5B3600656824 /* ProfileView.swift */,
@@ -536,6 +539,7 @@
 				BEA64035286A7BA100E86612 /* PushNotificationManager.swift in Sources */,
 				BEB705E1286785B3008A6F24 /* FollowRequestView.swift in Sources */,
 				BEB705EB2868E4B5008A6F24 /* FriendsViewModel.swift in Sources */,
+				BEE944C4287772A500BA1ACB /* PoopDetailView.swift in Sources */,
 				BEB705BF2864EA2C008A6F24 /* MainMessagesView.swift in Sources */,
 				BEB705C8286514D0008A6F24 /* User.swift in Sources */,
 				BEBA705528773D7C00CEDCBD /* AddPoopView.swift in Sources */,
