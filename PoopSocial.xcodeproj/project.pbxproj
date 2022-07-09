@@ -32,7 +32,6 @@
 		BEB705972864B97B008A6F24 /* PoopSocialUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705962864B97B008A6F24 /* PoopSocialUITestsLaunchTests.swift */; };
 		BEB705A42864C470008A6F24 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705A32864C470008A6F24 /* ContentView.swift */; };
 		BEB705AD2864CF02008A6F24 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705AC2864CF02008A6F24 /* ImagePicker.swift */; };
-		BEB705BF2864EA2C008A6F24 /* MainMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705BE2864EA2C008A6F24 /* MainMessagesView.swift */; };
 		BEB705C22864EBEE008A6F24 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705C12864EBEE008A6F24 /* FirebaseManager.swift */; };
 		BEB705C52864F40C008A6F24 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = BEB705C42864F40C008A6F24 /* SDWebImageSwiftUI */; };
 		BEB705C8286514D0008A6F24 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB705C7286514D0008A6F24 /* User.swift */; };
@@ -96,7 +95,6 @@
 		BEB705962864B97B008A6F24 /* PoopSocialUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopSocialUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		BEB705A32864C470008A6F24 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BEB705AC2864CF02008A6F24 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		BEB705BE2864EA2C008A6F24 /* MainMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMessagesView.swift; sourceTree = "<group>"; };
 		BEB705C12864EBEE008A6F24 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		BEB705C7286514D0008A6F24 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BEB705CD28661558008A6F24 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../.Trash/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -258,14 +256,6 @@
 			path = PoopSocialUITests;
 			sourceTree = "<group>";
 		};
-		BEB705BD2864EA13008A6F24 /* MainMessagesView */ = {
-			isa = PBXGroup;
-			children = (
-				BEB705BE2864EA2C008A6F24 /* MainMessagesView.swift */,
-			);
-			path = MainMessagesView;
-			sourceTree = "<group>";
-		};
 		BEB705C02864EBDC008A6F24 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,7 +285,6 @@
 				BEA6402C286A0F8B00E86612 /* Login Views */,
 				BEB705D428661BBC008A6F24 /* Friends Views */,
 				BEBA704F2875F65F00CEDCBD /* Setting Views */,
-				BEB705BD2864EA13008A6F24 /* MainMessagesView */,
 				BEA6402D286A0FA300E86612 /* Utility Views */,
 			);
 			path = Views;
@@ -540,7 +529,6 @@
 				BEB705E1286785B3008A6F24 /* FollowRequestView.swift in Sources */,
 				BEB705EB2868E4B5008A6F24 /* FriendsViewModel.swift in Sources */,
 				BEE944C4287772A500BA1ACB /* PoopDetailView.swift in Sources */,
-				BEB705BF2864EA2C008A6F24 /* MainMessagesView.swift in Sources */,
 				BEB705C8286514D0008A6F24 /* User.swift in Sources */,
 				BEBA705528773D7C00CEDCBD /* AddPoopView.swift in Sources */,
 				BEB705DD286625F3008A6F24 /* AddFriendRowView.swift in Sources */,

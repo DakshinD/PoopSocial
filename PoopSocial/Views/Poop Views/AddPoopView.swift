@@ -53,6 +53,7 @@ struct AddPoopView: View {
                             
                             
                             ZStack {
+                                
                                 TextEditor(text: $message)
                                     .overlay(RoundedRectangle(cornerRadius: 10)
                                         .stroke(LinearGradient(gradient: Gradient(colors: [.red, .orange, .yellow]), startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 2.5))
@@ -65,7 +66,7 @@ struct AddPoopView: View {
                                     .onChange(of: message) { newValue in
                                         proxy.scrollTo(999, anchor: .bottom)
                                     }
-                                    .padding()
+                                    .padding(.vertical)
                                     
                                 
                                 Text(message).opacity(0).padding(.all, 8)
@@ -87,6 +88,7 @@ struct AddPoopView: View {
                                 addNewPoop()
                             }) {
                                 Text("Add New Poop 💩")
+                                    .bold()
                             }
                             .buttonStyle(CustomGradientButton())
                             .frame(width: 250)

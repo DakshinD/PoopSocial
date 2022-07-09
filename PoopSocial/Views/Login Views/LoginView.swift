@@ -21,6 +21,7 @@ struct LoginView: View {
     @State private var shouldShowImagePicker = false
     @State private var image: UIImage?
     @State private var loginStatusMessage = ""
+    @State private var showErrorAlert = false
     
     @EnvironmentObject var friendVM: FriendsViewModel
 
@@ -64,7 +65,7 @@ struct LoginView: View {
                                     }
                                 }
                                 .overlay(RoundedRectangle(cornerRadius: 64)
-                                            .stroke(Color.black, lineWidth: 3)
+                                    .stroke(Color.text, lineWidth: 3)
                                 )
                             }
                         }
@@ -84,9 +85,34 @@ struct LoginView: View {
 
                             SecureField("Password", text: $password)
                                 .textFieldStyle(GradientTextFieldBackground(systemImageString: "lock"))
+                                .overlay(alignment: .bottomTrailing) {
+                                    if isLoginMode {
+                                        Button(action: {
+                                            if email == "" {
+                                                self.loginStatusMessage = "Please type in your email and press the button again"
+                                            } else {
+                                                sendPasswordResetEmail()
+                                            }
+                                        }){
+                                            Text("Forgot Password?")
+                                                .font(.footnote)
+                                                .foregroundColor(Color.gray)
+                                        }
+                                        .offset(x: -4, y: 25)
+                                    }
+                                }
+                                    
+                                
+                            
+                            HStack {
+                                
+                                
+
+                            }
                         }
-                        .background(Color.white)
+                        //.background(Color.white)
                         .padding(12)
+                        
                         
                         
                         
@@ -102,7 +128,7 @@ struct LoginView: View {
                                 
                         }
                         .buttonStyle(CustomGradientButton())
-                        .frame(width: 225)
+                        .frame(width: 225, height: 85)
                         .padding()
                         
                         Text(self.loginStatusMessage)
@@ -126,38 +152,82 @@ struct LoginView: View {
             ImagePicker(image: $image)
                 .ignoresSafeArea()
         }
+        .alert("Error", isPresented: $showErrorAlert, actions: {
+            
+        }, message: {
+            Text("\(loginStatusMessage)")
+        })
     }
     
-
+    private func sendPasswordResetEmail() {
+        FirebaseManager.shared.auth.sendPasswordReset(withEmail: email) { error in
+            if let error = error {
+                print("Error sending password reset email: \(error.localizedDescription)")
+                return
+            }
+        }
+    }
+    
     private func handleAction() {
         if isLoginMode {
             loginUser()
         } else {
-            createNewAccount()
+            checkUsernameExists()
         }
+    }
+    
+    private func checkUsernameExists()   {
+        FirebaseManager.shared.firestore.collection("users")
+            .whereField("username", isEqualTo: self.username)
+            .getDocuments { snapshot, error in
+                if let error = error {
+                    print("Found error checking for documents with same username: \(error.localizedDescription)")
+                    self.loginStatusMessage = "That username is taken already, please choose another one"
+                    showErrorAlert.toggle()
+                    return
+                }
+               
+                
+                if (snapshot?.documents.count ?? 1) > 0 {
+                    self.loginStatusMessage = "That username is taken already, please choose another one"
+                    showErrorAlert.toggle()
+
+                } else {
+                    createNewAccount()
+                }
+            }
+
+        
     }
     
     
     private func createNewAccount() {
         if self.image == nil {
             self.loginStatusMessage = "You must select an avatar image"
+            showErrorAlert.toggle()
+
             return
         }
         
+
+            
         FirebaseManager.shared.auth.createUser(withEmail: email, password: password) { result, error in
             
             if let error = error {
                 print("Failed to create user", error)
-                self.loginStatusMessage = "Failed to create user: \(error.localizedDescription)"
+                self.loginStatusMessage = "Failed to create a new account: \(error.localizedDescription)"
+                showErrorAlert.toggle()
+
                 return
             }
             
             print("Successfully created user: \(result?.user.uid ?? "")")
             
-            self.loginStatusMessage = "Successfully created user: \(result?.user.uid ?? "")"
+            //self.loginStatusMessage = "Successfully created user: \(result?.user.uid ?? "")"
             
             self.persistsImageToStorage()
         }
+ 
     }
     
     private func persistsImageToStorage() {
@@ -172,18 +242,18 @@ struct LoginView: View {
         ref.putData(imageData, metadata: nil) { metadata, error in
             
             if let error = error {
-                self.loginStatusMessage = "Failed to push image to Storage: \(error.localizedDescription)"
+                //self.loginStatusMessage = "Failed to push image to Storage: \(error.localizedDescription)"
                 return
             }
             
             ref.downloadURL { url, error in
                 
                 if let error = error {
-                    self.loginStatusMessage = "Failed to retrieve downloadURL: \(error.localizedDescription)"
+                    //self.loginStatusMessage = "Failed to retrieve downloadURL: \(error.localizedDescription)"
                     return
                 }
                 
-                self.loginStatusMessage = "Successfully stored image with url: \(url?.absoluteString ?? "")"
+                //self.loginStatusMessage = "Successfully stored image with url: \(url?.absoluteString ?? "")"
                 print(url?.absoluteString ?? "")
                 guard let url = url else { return }
                 self.storeUserInformation(imageProfileUrl: url)
@@ -202,7 +272,7 @@ struct LoginView: View {
             .document(uid).setData(userData) { error in
                 if let error = error {
                     print(error.localizedDescription)
-                    self.loginStatusMessage = "\(error.localizedDescription)"
+                    //self.loginStatusMessage = "\(error.localizedDescription)"
                     return
                 }
                 print("Success")
@@ -216,13 +286,13 @@ struct LoginView: View {
             
             if let error = error {
                 print("Failed to log in user", error)
-                self.loginStatusMessage = "Failed to log in as user: \(error.localizedDescription)"
+                //self.loginStatusMessage = "Failed to log in as user: \(error.localizedDescription)"
                 return
             }
             
             print("Successfully logged in user: \(result?.user.uid ?? "")")
             
-            self.loginStatusMessage = "Successfully logged in as user: \(result?.user.uid ?? "")"
+            //self.loginStatusMessage = "Successfully logged in as user: \(result?.user.uid ?? "")"
             
             friendVM.refreshData()
             self.didCompleteLoginProcess()// update user data singleton

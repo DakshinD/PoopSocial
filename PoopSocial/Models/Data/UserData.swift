@@ -60,6 +60,10 @@ class UserData: ObservableObject {
     
     public func fetchAllUsers(completion: @escaping () -> Void) {
         
+        if self.isNotLoggedIn {
+            return
+        }
+        
         FirebaseManager.shared.firestore.collection("users")
             .getDocuments { documents, error in
                 // Error
@@ -87,6 +91,11 @@ class UserData: ObservableObject {
 
     // Only call right after login is confirmed so uid can be fetched correctly
     public func fetchCurrentUser() {
+        
+        if self.isNotLoggedIn {
+            return
+        }
+        
         guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
             print("couldnt find user")
             return
@@ -100,6 +109,37 @@ class UserData: ObservableObject {
         self.username = currentUser!.username
         self.fcmToken = currentUser!.FCMToken
 
+    }
+    
+    public func fetchCurrentUserFromFirebase() {
+        
+        if self.isNotLoggedIn {
+            return
+        }
+        
+        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
+            print("couldnt find user")
+            return
+        }
+        
+        FirebaseManager.shared.firestore.collection("users").document(uid).getDocument { snapshot, error in
+            if let error = error {
+                print("Error fetching user doc: \(error.localizedDescription)")
+                return
+            }
+            
+            let data = snapshot?.data()
+            
+            let currentUser = User(data: data!)
+            
+            self.uid = currentUser.uid
+            self.email = currentUser.email
+            self.profileImageUrl = currentUser.profileImageUrl
+            self.username = currentUser.username
+            self.fcmToken = currentUser.FCMToken
+   
+        }
+        
     }
     
     func handleSignOut() {

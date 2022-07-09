@@ -11,6 +11,8 @@ struct SettingsView: View {
     
     @StateObject var userData = UserData.shared
     
+    @AppStorage("darkMode") var darkMode: Bool = false
+    
     
     var body: some View {
         
@@ -42,15 +44,27 @@ struct SettingsView: View {
                     
                     // Appearance - dark mode
                     Section(header: Text("Appearance")) {
-                        HStack {
-                            Text("Dark Mode")
-                            Spacer()
-                            //Toggle()
+                        Toggle(isOn: $darkMode) {
+                            HStack {
+                                Image(systemName: "circle.lefthalf.filled")
+                                    .foregroundColor(Color.accent)
+                                Text("Dark Mode")
+                            }
                         }
                     }
                     
                     
-                    // FAQ
+                    // Fiber
+                    Section(header: Text("Tips")) {
+                        NavigationLink(destination: FiberInfoView) {
+                            HStack {
+                                Image(systemName: "cross.case.fill")
+                                    .foregroundColor(Color.accent)
+
+                                Text("Fiber Facts")
+                            }
+                        }
+                    }
                     
                 }
                 .listRowBackground(Color.secondary)
@@ -76,6 +90,25 @@ struct SettingsView: View {
                 print("Successfully updated notification settings")
             }
         
+    }
+    
+    var FiberInfoView: some View {
+        ZStack {
+            Color.background.ignoresSafeArea()
+            List {
+                Section(footer: Text("Disclaimer: This is for informational purposes only and doesn't substitute professional medical advice by a doctor.")) {
+                    Text("- Fiber helps your bowel health! Eat your fiber! It'll become easier to poop and you won't become constipated")
+                    Text("- Fiber can help you feel full, which in turn can help with weight loss")
+                    Text("- You're at a lower risk of heart disease when eating more fiber")
+                    Text("- The average adult needs around 30 grams of fiber a day! A banana has around 3 grams of fiber")
+                    Text("- Your poops feel fantastic if you eat more fiber")
+                }
+                
+            }
+            .listRowBackground(Color.secondary)
+            .listStyle(InsetGroupedListStyle())
+        }
+        .navigationTitle("Fiber Facts")
     }
     
 }

@@ -30,6 +30,10 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         
         updateFirestorePushTokenIfNeeded()
       
+        
+        UserData.shared.isNotLoggedIn = (FirebaseManager.shared.auth.currentUser?.uid == nil)
+        print("USERDATAISNOTLOGGED:\(UserData.shared.isNotLoggedIn) + \(FirebaseManager.shared.auth.currentUser?.uid)")
+
         return true
       
     }

@@ -37,7 +37,9 @@ class FriendsViewModel: ObservableObject {
         
         UserData.shared.fetchAllUsers() {
             
-            UserData.shared.fetchCurrentUser()
+            if !UserData.shared.isNotLoggedIn {
+                UserData.shared.fetchCurrentUser()
+            }
             
             UserData.shared.fetchGlobalTopUsers { arr in
                 self.globalLeaders = arr

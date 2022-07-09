@@ -17,6 +17,8 @@ struct ContentView: View {
     
     @ObservedObject private var user: UserData = UserData.shared
     
+    @AppStorage("darkMode") var darkMode: Bool = false
+    
     var body: some View {
         
         TabView {
@@ -53,15 +55,20 @@ struct ContentView: View {
         }
         .tabViewStyle(DefaultTabViewStyle())
         .accentColor(Color.orange)
+        .preferredColorScheme(darkMode ? .dark : .light)
         .fullScreenCover(isPresented: $user.isNotLoggedIn) {
             LoginView(didCompleteLoginProcess: {
                 appDelegate.updateFirestorePushTokenIfNeeded()
                 // need to init poop and friend view models again
                 user.isNotLoggedIn = false
-                user.fetchCurrentUser()
+                user.fetchCurrentUserFromFirebase()
                 poopVM.refreshAllData()
                 friendVM.refreshAllData()
             })
+        }
+        .onAppear {
+            UserData.shared.isNotLoggedIn = (FirebaseManager.shared.auth.currentUser?.uid == nil)
+
         }
         
     }

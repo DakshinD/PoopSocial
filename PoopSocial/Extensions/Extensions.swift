@@ -112,9 +112,11 @@ struct GradientTextFieldBackground: TextFieldStyle {
                         ],
                         startPoint: .leading,
                         endPoint: .trailing
-                    )
+                    ), lineWidth: 3.5
                 )
-                .frame(height: 40)
+                .background(RoundedRectangle(cornerRadius: 5).fill(Color.secondary))
+                .frame(height: 50)
+                
             
             HStack {
                 Image(systemName: systemImageString)
