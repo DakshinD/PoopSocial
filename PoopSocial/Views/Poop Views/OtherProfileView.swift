@@ -51,9 +51,9 @@ struct OtherProfileView: View { // for other users - not current user
                     print("add friend button pressed")
                     friendVM.addFriendship(userA: FirebaseManager.shared.auth.currentUser?.uid ?? "", userB: user.uid) {
                         print("completion handler run")
-                        friendVM.fetchAllFriendships { // handle - only fetch the updated friendship? or add friendship object dont call db
+                        //friendVM.fetchAllFriendshipsBothParts { // handle - only fetch the updated friendship? or add friendship object dont call db
                             getFriendshipStatus()
-                        }
+                       // }
                     }
                 }) {
                     Text(friendRequestStatus)

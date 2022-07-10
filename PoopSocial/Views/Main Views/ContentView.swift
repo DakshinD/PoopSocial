@@ -61,9 +61,10 @@ struct ContentView: View {
                 appDelegate.updateFirestorePushTokenIfNeeded()
                 // need to init poop and friend view models again
                 user.isNotLoggedIn = false
-                user.fetchCurrentUserFromFirebase()
-                poopVM.refreshAllData()
-                friendVM.refreshAllData()
+                user.fetchCurrentUserFromFirebase() {
+                    poopVM.refreshAllData()
+                    friendVM.refreshAllData()
+                }
             })
         }
         .onAppear {

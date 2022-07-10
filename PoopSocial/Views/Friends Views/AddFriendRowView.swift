@@ -47,9 +47,9 @@ struct AddFriendRowView: View {
                 print("pressed")
                 friendVM.addFriendship(userA: FirebaseManager.shared.auth.currentUser?.uid ?? "", userB: user.uid) {
                     print("completion handler run")
-                    friendVM.fetchAllFriendships { // handle - only fetch the updated friendship?
+                    //friendVM.fetchAllFriendshipsBothParts { // handle - only fetch the updated friendship?
                         getFriendshipStatus()
-                    }
+                    //}
                 }
 
             }) {

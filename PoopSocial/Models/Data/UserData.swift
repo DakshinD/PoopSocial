@@ -60,10 +60,6 @@ class UserData: ObservableObject {
     
     public func fetchAllUsers(completion: @escaping () -> Void) {
         
-        if self.isNotLoggedIn {
-            return
-        }
-        
         FirebaseManager.shared.firestore.collection("users")
             .getDocuments { documents, error in
                 // Error
@@ -111,7 +107,7 @@ class UserData: ObservableObject {
 
     }
     
-    public func fetchCurrentUserFromFirebase() {
+    public func fetchCurrentUserFromFirebase(completion: @escaping () -> Void) {
         
         if self.isNotLoggedIn {
             return
@@ -137,6 +133,8 @@ class UserData: ObservableObject {
             self.profileImageUrl = currentUser.profileImageUrl
             self.username = currentUser.username
             self.fcmToken = currentUser.FCMToken
+            
+            completion()
    
         }
         

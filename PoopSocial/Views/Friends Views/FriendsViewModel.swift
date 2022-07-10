@@ -45,30 +45,37 @@ class FriendsViewModel: ObservableObject {
                 self.globalLeaders = arr
             }
             
-            self.fetchAllFriendships() {
+            self.fetchAllFriendshipsBothParts {
                 
                 self.fetchAllFriends()
-                
+
             }
             
         }
     }
     
     public func refreshAllData() {
-        UserData.shared.fetchAllUsers() {
+        
+        UserData.shared.fetchGlobalTopUsers { arr in
+            self.globalLeaders = arr
+        }
             
-            self.fetchAllFriendships() {
-                
-                self.fetchAllFriends()
-                
-            }
+        self.fetchAllFriendshipsBothParts {
             
+            self.fetchAllFriends()
+            
+            self.fetchNewFriends()
+
         }
     }
     
     public func refreshData() {
         //fetchAllUsers(completion: {})
-        fetchAllFriendships(completion: {})
+        self.fetchAllFriendshipsBothParts {
+            
+            self.fetchAllFriends()
+
+        }
     }
     
 
@@ -83,28 +90,38 @@ class FriendsViewModel: ObservableObject {
         
         print("fetching all friends")
         var tempFriends: [User] = [User]()
+        var tempFriendIDs: [String] = [String]()
         for friendship in self.allFriendships {
             if friendship.status == "accepted" {
                 var tempFriend: User
                 if friendship.userA != uid {
                     tempFriend = UserData.shared.getUserFromUID(uid: friendship.userA)!
+                    tempFriendIDs.append(friendship.userA)
                 } else { // watch these force unwraps
                     tempFriend = UserData.shared.getUserFromUID(uid: friendship.userB)!
+                    tempFriendIDs.append(friendship.userB)
                 }
                 tempFriends.append(tempFriend)
             }
         }
         self.friends = tempFriends
+        self.allFriendIDs = tempFriendIDs
     }
     
+    // MARK: - Listener for acceptance of friend requests sent by user
+    
+    var newFriendListener: ListenerRegistration?
+    
     public func fetchNewFriends() { // fetch if follow requests THIS user sent has been accepted
-        
+                
         guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
             print("User is not logged in")
             return
         }
         
-        FirebaseManager.shared.firestore
+        newFriendListener?.remove()
+
+        newFriendListener = FirebaseManager.shared.firestore
             .collection("friendships")
             .whereField("userA", isEqualTo: uid)
             .addSnapshotListener { documents, error in
@@ -124,8 +141,20 @@ class FriendsViewModel: ObservableObject {
                                 print("a friend request was accepted")
                                 // add friend to the array
                                 self.friends.append(UserData.shared.getUserFromUID(uid: friendRequest.userB)!)
-                                self.fetchAllFriendships() {
-                                    //friendVM.fetchAllFriends()
+                                self.allFriendIDs.append(friendRequest.userB)
+                                // update friendships
+                                for i in 0..<self.allFriendships.count {
+                                    let friendship = self.allFriendships[i]
+                                    if friendship.userA == uid && friendship.userB == friendRequest.userB {
+                                        let newFriendship = Friendship(data: [
+                                            "userA": friendship.userA,
+                                            "fcmTokenA": friendship.fcmTokenA,
+                                            "userB": friendship.userB,
+                                            "fcmTokenB": friendship.fcmTokenB,
+                                            "status": "accepted"
+                                        ])
+                                        self.allFriendships[i] = newFriendship
+                                    }
                                 }
                             }
                         }
@@ -133,8 +162,58 @@ class FriendsViewModel: ObservableObject {
                 })
             }
     }
+     
+    // MARK: - Listener for Friend requests
     
-    public func fetchAllFriendships(completion: @escaping () -> Void) { // friendships of current user - WILL HAVE TO BE CHANGED - CALLS TOO MANY DOCS AT LARGE SCALE
+    var friendRequestListener: ListenerRegistration?
+        
+    func fetchFriendRequests() {
+        // remove listener when user logs out
+        friendRequestListener?.remove()
+        
+        friendRequestListener = FirebaseManager.shared.firestore
+            .collection("friendships")
+            .whereField("userB", isEqualTo: FirebaseManager.shared.auth.currentUser?.uid ?? "")
+            .whereField("status", isEqualTo: "pending")
+            .addSnapshotListener { documents, error in
+                
+                if let error = error {
+                    print("Error fetching friend requests: \(error.localizedDescription)")
+                    return
+                }
+                
+                documents?.documentChanges.forEach({ change in
+                    if change.type == .added  { // new friend request was made
+                        let data = change.document.data()
+                        let friendRequest = Friendship(data: data)
+                        print("got friend req")
+                        for request in self.allFriendRequests {
+                            if friendRequest.userA == request.userA && friendRequest.userB == request.userB && friendRequest.status == request.status {
+                                return
+                            }
+                        }
+                        self.allFriendRequests.append(friendRequest)
+                        self.friendRequestCount = self.allFriendRequests.count
+                        //friendVM.fetchAllFriendshipsBothParts(completion: {})
+                        self.allFriendships.append(friendRequest)
+                        // i need to refresh the statuses in the add friends page
+                    }
+                })
+            }
+    }
+    
+    //MARK: - Fetch friendships of user, irregardless of status
+
+    
+    public func fetchAllFriendshipsBothParts(completion: @escaping () -> Void) {
+        self.fetchAllFriendshipsA {
+            self.fetchAllFriendshipsB {
+                completion()
+            }
+        }
+    }
+    
+    public func fetchAllFriendshipsA(completion: @escaping () -> Void) { // friendships of current user - WILL HAVE TO BE CHANGED - CALLS TOO MANY DOCS AT LARGE SCALE
         allFriendships = []
         allFriendIDs = []
         
@@ -161,7 +240,7 @@ class FriendsViewModel: ObservableObject {
                     let friendship = Friendship(data: data)
                     //if friendship.userA == FirebaseManager.shared.auth.currentUser?.uid || friendship.userB == FirebaseManager.shared.auth.currentUser?.uid {
                         // if the user retrieved is not the current user on the phone
-                    self.allFriendIDs.append(friendship.userB)
+                    //self.allFriendIDs.append(friendship.userB)
                     self.allFriendships.append(.init(data: data))
                     //}
                 })
@@ -170,6 +249,15 @@ class FriendsViewModel: ObservableObject {
                 completion()
             }
         
+    }
+    
+    public func fetchAllFriendshipsB(completion: @escaping () -> Void) {
+        
+        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
+            print("User is not logged in")
+            return
+        }
+
         // call for when userB is current user
         FirebaseManager.shared.firestore.collection("friendships")
             .whereField("userB", isEqualTo: uid)
@@ -188,7 +276,7 @@ class FriendsViewModel: ObservableObject {
                     let friendship = Friendship(data: data)
                     //if friendship.userA == FirebaseManager.shared.auth.currentUser?.uid || friendship.userB == FirebaseManager.shared.auth.currentUser?.uid {
                         // if the user retrieved is not the current user on the phone
-                    self.allFriendIDs.append(friendship.userA)
+                    //self.allFriendIDs.append(friendship.userA)
                     self.allFriendships.append(.init(data: data))
                     //}
                 })
@@ -196,7 +284,10 @@ class FriendsViewModel: ObservableObject {
                 print("Successfully retrieved all friendships Pt. A")
                 completion()
             }
+        
     }
+    
+    // MARK: -  Addition and Deletion of friendships
     
     public func addFriendship(userA: String, userB: String, completion: @escaping () -> Void) {
         // pending, accepted, "" - doesn't exist
@@ -204,7 +295,13 @@ class FriendsViewModel: ObservableObject {
         
         let userObjectA: User = UserData.shared.getUserFromUID(uid: userA) ?? User(data: [:])
         let userObjectB: User = UserData.shared.getUserFromUID(uid: userB) ?? User(data: [:])
-
+        let dict = [
+            "userA": userA,
+            "fcmTokenA": userObjectA.FCMToken,
+            "userB": userB,
+            "fcmTokenB": userObjectB.FCMToken,
+            "status": "pending" // when making friendship - default to pending
+        ]
         
         FirebaseManager.shared.firestore.collection("friendships").document(documentID)
             .setData([
@@ -221,6 +318,7 @@ class FriendsViewModel: ObservableObject {
                 } else {
                     print("Successfully uploaded friendship document")
                     //self.fetchAllFriendships()
+                    self.allFriendships.append(Friendship(data: dict))
                     completion()
                 }
             }
@@ -271,6 +369,8 @@ class FriendsViewModel: ObservableObject {
         }
         
     }
+    
+    // MARK: - Methods for checking current friendship status
     
     // have to refresh allFriendships to use this, if changes to status
     public func checkCurrentFriendshipStatus(userA: String, userB: String) -> String {
@@ -327,12 +427,16 @@ class FriendsViewModel: ObservableObject {
         return status // friendship status
     }
     
+    // MARK: - Listener for friend leaderboard
+    
     var friendLeaderboardListeners: [ListenerRegistration?] = []
     
     public func getAllFriendPoopTotals() {
+        self.friendStatsList.removeAll()
         var allFriendAndUserIDs = allFriendIDs
+        print("FRIENDID: \(allFriendAndUserIDs)")
+
         allFriendAndUserIDs.append(UserData.shared.uid)
-        print("FRIENDID: \(allFriendAndUserIDs.count)")
         let doubleCountVal = Double(allFriendAndUserIDs.count)
         var setsOf10: Double = (doubleCountVal)/10.0
         setsOf10.round(.up) // should be ceiling
@@ -359,6 +463,7 @@ class FriendsViewModel: ObservableObject {
                 print("Something went wrong getting batch of 10 friend IDs for snapshot listener")
                 return
             }
+            print("NEW FRIENDIDS: \(setOf10FriendIDs)")
             // create snapshot listener
             friendLeaderboardListeners.append(
                 FirebaseManager.shared.firestore.collection("poops").whereField(FieldPath.documentID(), in: setOf10FriendIDs)
@@ -381,6 +486,9 @@ class FriendsViewModel: ObservableObject {
                         }
                         
                     })
+                    
+                    print("LENGTH OF DICT: \(self.friendStatsList.count)")
+
                         
                 })
 
@@ -388,7 +496,6 @@ class FriendsViewModel: ObservableObject {
             
         }
         
-        print("LENGTH OF DICT: \(friendStatsList.count)")
     }
     
     public func removeFriendLeaderboardListeners() {

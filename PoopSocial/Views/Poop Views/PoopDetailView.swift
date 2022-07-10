@@ -56,8 +56,6 @@ struct PoopDetailView: View {
             
         }
         .navigationTitle("Poop")
-        .padding()
-
         
 
         

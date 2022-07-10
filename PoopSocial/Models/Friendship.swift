@@ -28,4 +28,5 @@ struct Friendship: Identifiable {
         
         self.status = data["status"] as? String ?? ""
     }
+    
 }

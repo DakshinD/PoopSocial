@@ -80,7 +80,7 @@ struct FollowRequestRow: View {
                 
                 // refresh friends list
                 print("FETCHING ALL FRIENDSHIPS")
-                friendVM.fetchAllFriendships {
+                friendVM.fetchAllFriendshipsBothParts {
                     print("FETCHING ALL FRIENDS")
                     friendVM.fetchAllFriends()
                 }
@@ -106,7 +106,7 @@ struct FollowRequestRow: View {
         
         // refresh friends list
         print("FETCHING ALL FRIENDSHIPS")
-        friendVM.fetchAllFriendships {
+        friendVM.fetchAllFriendshipsBothParts {
             print("FETCHING ALL FRIENDS")
             friendVM.fetchAllFriends()
         }

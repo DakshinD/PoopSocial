@@ -21,7 +21,7 @@ struct AddPoopView: View {
     
     
     init() {
-        UITextView.appearance().backgroundColor = .clear
+       // UITextView.appearance().backgroundColor = .clear
     }
     
     var body: some View {
@@ -49,15 +49,13 @@ struct AddPoopView: View {
                         
                         Section(footer: Text("Message is limited to 170 characters")) {
                             
-                                
-                            
+                           
                             
                             ZStack {
                                 
+                                
                                 TextEditor(text: $message)
-                                    .overlay(RoundedRectangle(cornerRadius: 10)
-                                        .stroke(LinearGradient(gradient: Gradient(colors: [.red, .orange, .yellow]), startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 2.5))
-                                    //.background(Color.orange.opacity(0.2))
+                                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(LinearGradient(gradient: Gradient(colors: [.red, .orange, .yellow]), startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 2.5))
                                     .onChange(of: self.message, perform: { value in
                                        if value.count > 170 {
                                            self.message = String(value.prefix(170))
@@ -72,6 +70,9 @@ struct AddPoopView: View {
                                 Text(message).opacity(0).padding(.all, 8)
                             }
                             .shadow(radius: 1)
+                            .listRowBackground(Color.secondary)
+                            .frame(height: 100)
+
                                               
                             Text("Character count: \(message.count)")
                                 .font(.footnote)
@@ -81,6 +82,8 @@ struct AddPoopView: View {
                             
                             
                         }
+                        .listRowBackground(Color.secondary)
+
                         
                         
                         Section {
@@ -99,9 +102,9 @@ struct AddPoopView: View {
 
                         
                     }
-                        .listRowBackground(Color.secondary)
-                        .listStyle(InsetGroupedListStyle())
-                        .padding()
+                    .listRowBackground(Color.secondary)
+                    .listStyle(InsetGroupedListStyle())
+                    .padding()
 
                 }
                 

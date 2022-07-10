@@ -124,7 +124,7 @@ struct LoginView: View {
                             Text(isLoginMode ? "Log In" : "Create Account")
                                 .foregroundColor(.white)
                                 .padding(.vertical, 10)
-                                .font(.system(size: 25, weight: .bold))
+                                .font(.system(size: 20, weight: .bold))
                                 
                         }
                         .buttonStyle(CustomGradientButton())
@@ -266,7 +266,7 @@ struct LoginView: View {
     private func storeUserInformation(imageProfileUrl: URL) {
         guard let uid = FirebaseManager.shared.auth.currentUser?.uid else { return }
         
-        let userData = ["email": self.email, "username": self.username ,"uid": uid, "profileImageUrl": imageProfileUrl.absoluteString]
+        let userData: [String: Any] = ["email": self.email, "username": self.username ,"uid": uid, "profileImageUrl": imageProfileUrl.absoluteString, "recieveNotifications": true]
         
         FirebaseManager.shared.firestore.collection("users")
             .document(uid).setData(userData) { error in
@@ -282,6 +282,7 @@ struct LoginView: View {
     }
     
     private func loginUser() {
+        print("pressed login")
         FirebaseManager.shared.auth.signIn(withEmail: email, password: password) { result, error in
             
             if let error = error {
@@ -294,7 +295,7 @@ struct LoginView: View {
             
             //self.loginStatusMessage = "Successfully logged in as user: \(result?.user.uid ?? "")"
             
-            friendVM.refreshData()
+            //friendVM.refreshData()
             self.didCompleteLoginProcess()// update user data singleton
         }
         
